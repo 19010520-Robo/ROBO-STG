@@ -2,7 +2,7 @@
 #include"CKey.h"
 #include"CSceneGame.h"
 CXPlayer *CXPlayer::mPlayer = 0;
-int CXPlayer::mLife;
+int CXPlayer::mPLife;
 CXPlayer::CXPlayer()
 :mColSphereBody(this, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereHead(this, CVector(0.0f, 5.0f, -3.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
@@ -21,7 +21,7 @@ CXPlayer::CXPlayer()
 	kasokuC = 0;
 	mHyuu = true;
 	mPlayer = this;
-	mLife = 3;
+	mPLife = 3;
 }
 
 void CXPlayer::Update(){

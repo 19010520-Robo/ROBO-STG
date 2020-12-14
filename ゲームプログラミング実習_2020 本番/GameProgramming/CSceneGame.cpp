@@ -17,7 +17,7 @@
 CMatrix Matrix;
 CModel BackGround;
 CModel CSceneGame::mCube;
-
+CModel ModelEnemy;
 void CSceneGame::Init() {
 
 	CXEnemy3::mPointSize = 3;
@@ -33,6 +33,7 @@ void CSceneGame::Init() {
 	CXEnemy::mPoint[2].Set(CVector(35.0f, 0.0f, 0.0f), 10.0f);
 
 	mCube.Load("cube.obj", "cube.mtl");
+	ModelEnemy.Load("f16.obj", "f16.mtl");
 
 	CRes::sModelX.Load(MODEL_FILE);
 	CRes::sKnight.Load(MODEL_FILE2);
@@ -61,7 +62,7 @@ void CSceneGame::Init() {
 	//“G‚Ì”z’u]
 	Player.mPosition = CVector(0.0f, 2.0f, -100.0f);
 	new CXEnemy2(&mCube, CVector(100.0f, 20.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
-	mEnemy3 = new CXEnemy3(&mCube, CVector(100.0f, 10.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
+	mEnemy3 = new CXEnemy3(&ModelEnemy, CVector(100.0f, 10.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
 	mEnemy3->mPosition = (CVector(0.0f, 35.0f, -100.0f));
 	mEnemy->mPosition = CVector(0.0f, 0.0f, 100.0f);
 	mEnemy->mRotation = CVector(0.0f, 90.0f, 0.0f);

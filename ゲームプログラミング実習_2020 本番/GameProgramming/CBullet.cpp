@@ -5,7 +5,6 @@ CBullet::CBullet()
 {
 	mCollider.mTag = CCollider::EBULLET;
 	mTag = EEYE;
-
 }
 //•‚Æ‰œs‚«‚Ìİ’è
 //Set(•,‰œs)
@@ -59,7 +58,7 @@ CBullet2::CBullet2()
 :mLife(100), mCollider(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 0.1f)
 {
 	mpModel = &CSceneGame::mCube;
-	mCollider.mTag = CCollider::EBULLET;
+	mCollider.mTag = CCollider::EBULLETE;
 }
 
 //•‚Æ‰œs‚«‚Ìİ’è

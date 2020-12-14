@@ -16,8 +16,10 @@ public:
 		EBODY,//機体
 		ESEARCH,//サーチ
 		ESEARCH2,//サーチ2
+		ESEARCHA,//攻撃用サーチ
 		ESWORD,//剣
 		EBULLET,
+		EBULLETE,
 		EMAP,
 		EPBODY,
 	};

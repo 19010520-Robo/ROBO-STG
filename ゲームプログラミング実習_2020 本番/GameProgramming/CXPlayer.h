@@ -27,7 +27,7 @@ public:
 	int hayasa;
 	float kasokuB;
 	float kasokuC;
-	static int mLife;
+	static int mPLife;
 };
 
 

@@ -14,6 +14,7 @@ public:
 	CCollider mColSphereSword1; //Œ•
 	CCollider mColSphereSword2; //Œ•
 	CCollider mSearch;
+	CCollider mSearchA;
 	void Init(CModelX*model);
 	CXEnemy();
 	void Collision(CCollider*m, CCollider*y);
@@ -24,6 +25,8 @@ public:
 	//—U“±ƒ|ƒCƒ“ƒg
 	static CPoint *mPoint;
 	bool mKAKUNIN;
+	bool mSWORD;
+	bool mHANTEI;
 };
 
 class CXEnemy2 :public CCharacter{

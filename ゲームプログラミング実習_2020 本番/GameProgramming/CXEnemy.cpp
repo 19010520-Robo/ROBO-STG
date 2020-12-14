@@ -4,7 +4,6 @@ CPoint *CXEnemy3::mPoint;
 int CXEnemy3::mPointSize = 0;
 CPoint *CXEnemy::mPoint;
 int CXEnemy::mPointSize = 0;
-
 CXEnemy3*CXEnemy3::mEnemy3 = 0;
 bool CXEnemy3::Senser = false;
 CXEnemy::CXEnemy()
@@ -13,14 +12,17 @@ CXEnemy::CXEnemy()
 , mColSphereSword0(this, CVector(0.7f, 3.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereSword1(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereSword2(this, CVector(0.3f, 1.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
-, mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 10.0f)
+, mSearch(this, CVector(0.0f, 0.0f, -7.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 15.0f)
+, mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 3.0f)
 {
 	mScale = CVector(1.0f, 1.0f, 1.0f);
 	mColSphereBody.mTag = CCollider::EBODY;
 	mSearch.mTag = CCollider::ESEARCH;
+	mSearchA.mTag = CCollider::ESEARCHA;
 	mPointCnt = 0;//最初のポイントを設定
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定
 	mKAKUNIN = false;
+	mSWORD = false;
 }
 void CXEnemy::Init(CModelX*model)
 {
@@ -57,8 +59,7 @@ void CXEnemy::Update(){
 		else if (left.Dot(dir) < 0.0f){
 			mRotation.mY += 1.5f;
 		}
-		//mPosition = CVector(0.0f, 0.0f, -0.2f)*mMatrix;
-
+		mPosition = CVector(0.0f, 0.0f, -0.1f)*mMatrix;
 	}
 	if (mKAKUNIN == true){
 		CVector dir = CXPlayer::mPlayer->mPosition - mPosition;
@@ -73,15 +74,27 @@ void CXEnemy::Update(){
 		CMatrix().RotateY(mRotation.mY);*/
 		//左右の回転処理
 		if (left.Dot(dir) > 0.0f){
-			mRotation.mY -= 3.0f;
+			mRotation.mY -= 5.0f;
 		}
 		else if (left.Dot(dir) < 0.0f){
-			mRotation.mY += 3.0f;
+			mRotation.mY += 5.0f;
 		}
-		//mPosition = CVector(0.0f, 0.0f, -0.5f)*mMatrix;
+		mPosition = CVector(0.0f, 0.0f, -0.15f)*mMatrix;
 
 	}
-
+	if (mSWORD == true){
+		ChangeAnimation(7, true, 60);
+		mPosition = CVector(0.0f, 0.0f, -0.01f)*mMatrix;
+		if (mAnimationFrame > 35){
+			mPosition = CVector(0.0f, 0.0f, -0.25f)*mMatrix;
+		}
+		if (mAnimationFrame == 60){
+			mSWORD = false;
+		}
+	}
+	if (mSWORD == false){
+		ChangeAnimation(1, true , 30);
+	}
 	////上下の回転処理
 	//if (up.Dot(dir)>0.0f){
 	//	mRotation.mX -= 0.3f;
@@ -104,6 +117,12 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 					mKAKUNIN = true;
 				}
 			}
+			if (m->mTag == CCollider::ESEARCHA){
+				switch (y->mpParent->mTag){
+				case EPLAYER:
+					mSWORD = true;
+				}
+			}
 			else{
 				switch (y->mpParent->mTag){
 				case EPOINT:
@@ -118,6 +137,9 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 				}
 			}
 		}
+	}
+	else{
+		mKAKUNIN = false;
 	}
 }
 CXEnemy2::CXEnemy2(CModel*model, CVector position, CVector rotation, CVector scale)
