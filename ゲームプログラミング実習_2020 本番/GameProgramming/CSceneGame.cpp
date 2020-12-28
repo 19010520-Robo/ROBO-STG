@@ -53,7 +53,8 @@ void CSceneGame::Init() {
 	CEye2(&mCube, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f));
 	//キャラクターにモデルを設定
 	Player.Init(&CRes::sModelX);
-	mEnemy = new CXEnemy();
+	mEnemy = new CXEnemy(CVector(0.0f, 0.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
+	//mEnemy = new CXEnemy(CVector(30.0f, 0.0f, 50.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
 	mEnemy->Init(&CRes::sKnight);
 	//テキストフォントの読み込みと設定
 	CText::mFont.Load("FontG.tga");
@@ -62,10 +63,8 @@ void CSceneGame::Init() {
 	//敵の配置]
 	Player.mPosition = CVector(0.0f, 2.0f, -100.0f);
 	new CXEnemy2(&mCube, CVector(100.0f, 20.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
-	mEnemy3 = new CXEnemy3(&ModelEnemy, CVector(100.0f, 10.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
-	mEnemy3->mPosition = (CVector(0.0f, 35.0f, -100.0f));
-	mEnemy->mPosition = CVector(0.0f, 0.0f, 100.0f);
-	mEnemy->mRotation = CVector(0.0f, 90.0f, 0.0f);
+	new CXEnemy2(&mCube, CVector(10.0f, 20.0f, 30.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
+	mEnemy3 = new CXEnemy3(&ModelEnemy, CVector(100.0f, 35.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
 	mEnemy->mAnimationFrameSize = 1024;
 	mEnemy->ChangeAnimation(1, true, 60);
 	mMap = new CMap();

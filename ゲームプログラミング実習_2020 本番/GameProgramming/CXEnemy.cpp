@@ -6,7 +6,7 @@ CPoint *CXEnemy::mPoint;
 int CXEnemy::mPointSize = 0;
 CXEnemy3*CXEnemy3::mEnemy3 = 0;
 bool CXEnemy3::Senser = false;
-CXEnemy::CXEnemy()
+CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 :mColSphereBody(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.0f)
 , mColSphereHead(this, CVector(0.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.5f)
 , mColSphereSword0(this, CVector(0.7f, 3.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
@@ -15,8 +15,12 @@ CXEnemy::CXEnemy()
 , mSearch(this, CVector(0.0f, 0.0f, -7.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 15.0f)
 , mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 3.0f)
 {
-	mScale = CVector(1.0f, 1.0f, 1.0f);
-	mColSphereBody.mTag = CCollider::EBODY;
+	mTag = EENEMY;
+
+	mPosition = position;//位置の設定
+	mRotation = rotation;//回転の設定
+	mScale = scale;//拡縮の設定
+	mColSphereBody.mTag = CCollider::EEBODY;
 	mSearch.mTag = CCollider::ESEARCH;
 	mSearchA.mTag = CCollider::ESEARCHA;
 	mPointCnt = 0;//最初のポイントを設定
@@ -127,9 +131,9 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 				switch (y->mpParent->mTag){
 				case EPOINT:
 					if (y->mpParent == mpPoint){
-						mPointCnt++;//次のポイントにする
+						mPointCnt=rand()%3;//次のポイントにする
 						//最後だったら最初にする
-						mPointCnt %= mPointSize;
+						//mPointCnt %= mPointSize;
 						//次のポイントのポインタを設定
 						mpPoint = &mPoint[mPointCnt];
 					}
@@ -144,12 +148,16 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 }
 CXEnemy2::CXEnemy2(CModel*model, CVector position, CVector rotation, CVector scale)
 :mBall(this, CVector(0.0f, 0.0f, 0.0f), CVector(), CVector(1.0f / scale.mX, 1.0f / scale.mY, 1.0f / scale.mZ), 1.0f)
+, mSearch3(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 30.0f)
 {
+	mTag = EENEMY;
+
 	mpModel = model;//モデルの設定
 	mPosition = position;//位置の設定
 	mRotation = rotation;//回転の設定
 	mScale = scale;//拡縮の設定
-	mBall.mTag = CCollider::EBODY;
+	mBall.mTag = CCollider::EEBODY;
+	mSearch3.mTag = CCollider::ESEARCH3;
 }
 void CXEnemy2::Update(){
 	CVector dir = CXPlayer::mPlayer->mPosition - mPosition;
@@ -187,16 +195,28 @@ void CXEnemy2::Update(){
 	}
 	CCharacter::Update();
 }
-
+void CXEnemy2::Collision(CCollider*mm, CCollider*ym){
+	if (mm->mType == CCollider::ESPHERE&&ym->mType == CCollider::ESPHERE){
+		if (CCollider::Collision(mm, ym)){
+			if (mm->mTag == CCollider::ESEARCH3){
+				if (ym->mTag == CCollider::EBULLET){
+					mPosition = CVector(1.0f, 0.0f, 0.0f)*mMatrix;
+				}
+			}
+		}
+	}
+}
 CXEnemy3::CXEnemy3(CModel*model, CVector position, CVector rotation, CVector scale)
 :mAir(this, CVector(0.0f, 0.0f, 0.0f), CVector(), CVector(1.0f / scale.mX, 1.0f / scale.mY, 1.0f / scale.mZ), 1.0f)
 , mSearch2(this, CVector(0.0f, -20.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 30.0f)
 {
+	mTag = EENEMY;
+
 	mpModel = model;//モデルの設定
 	mPosition = position;//位置の設定
 	mRotation = rotation;//回転の設定
 	mScale = scale;//拡縮の設定
-	mAir.mTag = CCollider::EBODY;
+	mAir.mTag = CCollider::EEBODY;
 	mSearch2.mTag = CCollider::ESEARCH2;
 	mPointCnt = 0;//最初のポイントを設定
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定

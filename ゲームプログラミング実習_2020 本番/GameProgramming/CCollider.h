@@ -16,12 +16,16 @@ public:
 		EBODY,//機体
 		ESEARCH,//サーチ
 		ESEARCH2,//サーチ2
+		ESEARCH3,//回避用サーチ
 		ESEARCHA,//攻撃用サーチ
 		ESWORD,//剣
 		EBULLET,
 		EBULLETE,
 		EMAP,
 		EPBODY,
+		EEBODY,
+		ESIGHT,
+
 	};
 	ETag mTag;
 	//コライダタイプ

@@ -17,6 +17,7 @@ public:
 	CXEnemy*mEnemy;
 	CXEnemy3 *mEnemy3;
 	static CModel mCube;
+	static CModel mPlane;
 	~CSceneGame();
 	CSceneGame(){};
 	//初期化処理のオーバーライド

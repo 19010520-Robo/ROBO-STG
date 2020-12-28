@@ -16,7 +16,7 @@ public:
 	CCollider mSearch;
 	CCollider mSearchA;
 	void Init(CModelX*model);
-	CXEnemy();
+	CXEnemy(CVector position, CVector rotation, CVector scale);
 	void Collision(CCollider*m, CCollider*y);
 	void Update();
 	static int mPointSize;//É|ÉCÉìÉgÇÃêî
@@ -35,8 +35,10 @@ public:
 	CXEnemy2();
 	CCollider mBall;
 	int FireCount2;
+	void Collision(CCollider*mm, CCollider*ym);
 	CXEnemy2(CModel*model, CVector position, CVector rotation, CVector scale);
-
+	CCollider mSearch3;
+	int tyuusen;
 };
 
 class CXEnemy3 :public CCharacter{

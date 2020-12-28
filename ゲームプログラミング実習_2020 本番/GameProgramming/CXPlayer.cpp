@@ -3,18 +3,24 @@
 #include"CSceneGame.h"
 CXPlayer *CXPlayer::mPlayer = 0;
 int CXPlayer::mPLife;
+bool CXPlayer::mInSight = false;
+
 CXPlayer::CXPlayer()
 :mColSphereBody(this, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereHead(this, CVector(0.0f, 5.0f, -3.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereSword(this, CVector(-10.0f, 10.0f, 50.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.3f)
 , mAshi1(this, CVector(0.0f, 1.5f, 0.0f), CVector(), CVector(5.0f, 5.0f, 5.0f),0.5f)
 , mAshi2(this, CVector(0.0f, 1.5f, 0.0f), CVector(), CVector(5.0f, 5.0f, 5.0f), 0.5f)
+, mSight(this, CVector(0.0f, 1.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(50.0f, 50.0f, 50.0f), 1.0f)
+
 {
 	mScale = CVector(1.0f, 1.0f, 1.0f);
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
 	mColSphereBody.mTag = CCollider::EPBODY;
 	mColSphereSword.mTag = CCollider::ESWORD;
+	mSight.mTag = CCollider::ESIGHT;
+
 	mVelovcityJump = 0;
 	kasoku = 0;
 	kasokuB = 0;
@@ -157,4 +163,17 @@ void CXPlayer::Collision(CCollider*mp, CCollider*yp){
 			}
 		}
 	}
+	if (mp->mType == CCollider::ESPHERE&&yp->mType == CCollider::ESPHERE){
+		if (CCollider::Collision(mp, yp)){
+			if (mp->mTag == CCollider::ESIGHT){
+				switch (yp->mpParent->mTag){
+				case EENEMY:
+					if (CCollider::EEBODY){
+						mInSight = true;
+					}
+				}
+			}
+		}
+	}
+
 }

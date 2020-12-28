@@ -14,6 +14,8 @@ public:
 	CCollider mColSphereSword; //剣
 	CCollider mAshi1;
 	CCollider mAshi2;
+	CCollider mSight;
+	static bool mInSight;
 	bool mHyuu;
 	//デフォルトコンストラクタ
 	CXPlayer();
