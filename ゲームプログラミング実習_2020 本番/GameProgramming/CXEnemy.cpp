@@ -1,5 +1,6 @@
 #include"CXEnemy.h"
 #include"CXPlayer.h"
+CXEnemy *CXEnemy::mEnemy = 0;
 CPoint *CXEnemy3::mPoint;
 int CXEnemy3::mPointSize = 0;
 CPoint *CXEnemy::mPoint;
@@ -27,6 +28,8 @@ CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定
 	mKAKUNIN = false;
 	mSWORD = false;
+	mEnemy = this;
+
 }
 void CXEnemy::Init(CModelX*model)
 {
@@ -118,13 +121,17 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 			if (m->mTag == CCollider::ESEARCH){
 				switch (y->mpParent->mTag){
 				case EPLAYER:
-					mKAKUNIN = true;
+					if (y->mTag==CCollider::EPBODY){
+						mKAKUNIN = true;
+					}
 				}
 			}
 			if (m->mTag == CCollider::ESEARCHA){
 				switch (y->mpParent->mTag){
 				case EPLAYER:
-					mSWORD = true;
+					if (y->mTag == CCollider::EPBODY){
+						mSWORD = true;
+					}
 				}
 			}
 			else{

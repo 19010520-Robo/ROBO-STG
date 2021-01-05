@@ -4,6 +4,7 @@
 CXPlayer *CXPlayer::mPlayer = 0;
 int CXPlayer::mPLife;
 bool CXPlayer::mInSight = false;
+bool CXPlayer::mLook = true;
 
 CXPlayer::CXPlayer()
 :mColSphereBody(this, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
@@ -11,7 +12,7 @@ CXPlayer::CXPlayer()
 , mColSphereSword(this, CVector(-10.0f, 10.0f, 50.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.3f)
 , mAshi1(this, CVector(0.0f, 1.5f, 0.0f), CVector(), CVector(5.0f, 5.0f, 5.0f),0.5f)
 , mAshi2(this, CVector(0.0f, 1.5f, 0.0f), CVector(), CVector(5.0f, 5.0f, 5.0f), 0.5f)
-, mSight(this, CVector(0.0f, 1.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(50.0f, 50.0f, 50.0f), 1.0f)
+, mSight(this, CVector(0.0f, 1.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 50.0f)
 
 {
 	mScale = CVector(1.0f, 1.0f, 1.0f);
@@ -110,11 +111,33 @@ void CXPlayer::Update(){
 		{
 			kasokuC = 0;
 		}
-		if (CKey::Push('J')){
-			mRotation.mY += 3;
+		if (mLook == true){
+			if (CKey::Push('J')){
+				mRotation.mY += 3;
+			}
+			if (CKey::Push('L')){
+				mRotation.mY -= 3;
+			}
 		}
-		if (CKey::Push('L')){
-			mRotation.mY -= 3;
+		if (mInSight == true){
+			if (CKey::Once('Q')){
+				mLook = false;
+			}
+			if (mLook == false){
+				CVector dir = CXEnemy::mEnemy->mPosition - mPosition;
+				//左方向のベクトルを求める
+				CVector left = CVector(1.0f, 0.0f, 0.0f)*
+					CMatrix().RotateY(mRotation.mY);
+				CVector right = CVector(-1.0f, 0.0f, 0.0f)*
+					CMatrix().RotateY(mRotation.mY);
+				//左右の回転処理
+				if (left.Dot(dir) > 0.0f){
+					mRotation.mY += 1.0f;
+				}
+				else if (left.Dot(dir) < 0.0f){
+					mRotation.mY -= 1.0f;
+				}
+			}
 		}
 	}
 	if (CKey::Once('T')&&mHyuu==true){
@@ -129,8 +152,6 @@ void CXPlayer::Update(){
 	mVelovcityJump = mVelovcityJump - G;
 	mPosition.mY = mPosition.mY + mVelovcityJump;
 	CXCharacter::Update();
-
-
 }
 void CXPlayer::Init(CModelX*model)
 {
@@ -151,15 +172,17 @@ void CXPlayer::Collision(CCollider*mp, CCollider*yp){
 //自身のコライダの判定タイプ
 	switch (mp->mType){
 	case CCollider::ESPHERE://球コライダ
-		if (yp->mType == CCollider::ETRIANGLE){
-			CVector adjust;//調整用ベクトル
-			if (CCollider::CollisionTriangleSphere(yp, mp, &adjust)){
-				mVelovcityJump = 0;
-				//位置の更新
-				mPosition = mPosition - adjust*-1;
-				mHyuu = true;
-				//行列の更新
-				CXCharacter::Update();
+		if (mp->mTag == !CCollider::ESIGHT){
+			if (yp->mType == CCollider::ETRIANGLE){
+				CVector adjust;//調整用ベクトル
+				if (CCollider::CollisionTriangleSphere(yp, mp, &adjust)){
+					mVelovcityJump = 0;
+					//位置の更新
+					mPosition = mPosition - adjust*-1;
+					mHyuu = true;
+					//行列の更新
+					CXCharacter::Update();
+				}
 			}
 		}
 	}

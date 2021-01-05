@@ -50,7 +50,7 @@ void CSceneGame::Init() {
 	CRes::sKnight.SeparateAnimationSet(0, 1160, 1260, "death1");//11:ダウン
 	BackGround.Load("sky.obj", "sky.mtl");
 	CEye(&mCube, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f));
-	CEye2(&mCube, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f));
+	//CEye2(&mCube, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f));
 	//キャラクターにモデルを設定
 	Player.Init(&CRes::sModelX);
 	mEnemy = new CXEnemy(CVector(0.0f, 0.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
@@ -62,9 +62,9 @@ void CSceneGame::Init() {
 	//敵の初期設定
 	//敵の配置]
 	Player.mPosition = CVector(0.0f, 2.0f, -100.0f);
-	new CXEnemy2(&mCube, CVector(100.0f, 20.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
-	new CXEnemy2(&mCube, CVector(10.0f, 20.0f, 30.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
-	mEnemy3 = new CXEnemy3(&ModelEnemy, CVector(100.0f, 35.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
+	//new CXEnemy2(&mCube, CVector(100.0f, 20.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
+	//new CXEnemy2(&mCube, CVector(10.0f, 20.0f, 30.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
+	//mEnemy3 = new CXEnemy3(&ModelEnemy, CVector(100.0f, 35.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
 	mEnemy->mAnimationFrameSize = 1024;
 	mEnemy->ChangeAnimation(1, true, 60);
 	mMap = new CMap();
@@ -82,7 +82,7 @@ void CSceneGame::Update() {
 	////フレームの合成行列を計算する
 	//CRes::sModelX.mFrame[0]->AnimateCombined(&Matrix);
 	mEye.mPosition = Player.mPosition;
-	mEye2.mPosition = mEnemy3->mPosition;
+	//mEye2.mPosition = mEnemy3->mPosition;
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
 	e = CVector(0.0, 5.5,  -6.0)*mEye.mMatrix;
@@ -91,6 +91,9 @@ void CSceneGame::Update() {
 	//上方向を求める
 	u = CVector(0.0, 0.5, 0.0)*mEye.mMatrixRotate;
 	//カメラの設定
+	if (CXPlayer::mLook == false){
+
+	}
 	Camera3D(e.mX, e.mY, e.mZ, c.mX, c.mY, c.mZ, u.mX, u.mY, u.mZ);
 	////x軸＋回転
 	//if (GetKeyState('K') & 0x8000){

@@ -1,44 +1,8 @@
-﻿2020/12/29 1:39:21 にビルドを開始しました。
-     1>ノード 2 上のプロジェクト "C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\GameProgramming\GameProgramming.vcxproj" (Rebuild ターゲット)。
+﻿2021/01/06 1:30:38 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\GameProgramming\GameProgramming.vcxproj" (Build ターゲット)。
      1>ClCompile:
-         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CBillBoard.cpp CBullet.cpp CCamera.cpp CCharacter.cpp CCollider.cpp CCollisionManager.cpp CEffect.cpp CEye.cpp CKey.cpp CMap.cpp CMaterial.cpp CMatrix.cpp CModel.cpp CModelX.cpp CMyShader.cpp CPoint.cpp CRes.cpp CScene.cpp CSceneGame.cpp CSceneManager.cpp CShader.cpp CTaskManager.cpp CText.cpp CTexture.cpp CTransform.cpp CTriangle.cpp CVector.cpp CXCharacter.cpp CXEnemy.cpp CXPlayer.cpp main.cpp
-         main.cpp
+         C:\Program Files (x86)\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CBillBoard.cpp CBullet.cpp CCamera.cpp CEye.cpp CSceneGame.cpp CSceneManager.cpp CXEnemy.cpp CXPlayer.cpp
          CXPlayer.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CXEnemy.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CXCharacter.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cxcharacter.cpp(82): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-         CVector.cpp
-         CTriangle.cpp
-         CTransform.cpp
-         CTexture.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\ctexture.cpp(48): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(211) : 'fopen' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\ctexture.cpp(55): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-         CText.cpp
-         CTaskManager.cpp
-         CShader.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cshader.cpp(12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(211) : 'fopen' の宣言を確認してください。
-         CSceneManager.cpp
      1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
      1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
      1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
@@ -52,184 +16,14 @@
      1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
      1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
                  c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CScene.cpp
-         CRes.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CPoint.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CMyShader.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.cpp(11): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.cpp(25): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.cpp(83): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-         CModelX.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(11): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(211) : 'fopen' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(94): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(183): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(401): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(426): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(494): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(515): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(579): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(622): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(741): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(746): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(754): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(759): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(810): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(828): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(832): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(843): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(853): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(891): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(893): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(896): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(937): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.cpp(953): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-         CModel.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(21): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(211) : 'fopen' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(37): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(46): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(195) : 'strncpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(77): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(211) : 'fopen' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(102): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(119): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(120): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(121): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(135): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(136): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(137): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\stdio.h(304) : 'sscanf' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(192): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(194): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(236): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodel.cpp(269): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-         CMatrix.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmatrix.cpp(52): warning C4244: '初期化中' : 'double' から 'float' への変換です。データが失われる可能性があります。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmatrix.cpp(64): warning C4244: '初期化中' : 'double' から 'float' への変換です。データが失われる可能性があります。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmatrix.cpp(73): warning C4244: '初期化中' : 'double' から 'float' への変換です。データが失われる可能性があります。
          コードを生成中...
-         コンパイル中...
-         CMaterial.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmaterial.cpp(64): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmaterial.cpp(89): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\vc\include\string.h(112) : 'strcpy' の宣言を確認してください。
-         CMap.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CKey.cpp
+         スキップ中... (関連する変更は検出されませんでした)
+         CXEnemy.cpp
+         CSceneManager.cpp
          CEye.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\ceye.cpp(1): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CEffect.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CCollisionManager.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CCollider.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         CCharacter.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
          CCamera.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
          CBullet.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
          CBillBoard.cpp
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(64): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(145): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(220): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(223): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
-     1>c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmodelx.h(224): warning C4150: 'CMaterial' 型を削除するため delete 演算子が呼び出されましたが、定義がありません。
-                 c:\users\hp\desktop\robo\robo-stg\ゲームプログラミング実習_2020 本番\gameprogramming\cmyshader.h(7) : 'CMaterial' の宣言を確認してください。
-         コードを生成中...
        Link:
          C:\Program Files (x86)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\Debug\GameProgramming.exe" /INCREMENTAL /NOLOGO glew32.lib glfw3.lib glfw3dll.lib glut32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\Debug\GameProgramming.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\Debug\GameProgramming.lib" /MACHINE:X86 Debug\CBillBoard.obj
          Debug\CBullet.obj
@@ -262,10 +56,9 @@
          Debug\CXEnemy.obj
          Debug\CXPlayer.obj
          Debug\main.obj
-     1>LINK : warning LNK4098: defaultlib 'MSVCRT' は他のライブラリの使用と競合しています。/NODEFAULTLIB:library を使用してください。
          GameProgramming.vcxproj -> C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\Debug\GameProgramming.exe
-     1>プロジェクト "C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\GameProgramming\GameProgramming.vcxproj" (Rebuild ターゲット) のビルドが完了しました。
+     1>プロジェクト "C:\Users\hp\Desktop\robo\ROBO-STG\ゲームプログラミング実習_2020 本番\GameProgramming\GameProgramming.vcxproj" (Build ターゲット) のビルドが完了しました。
 
 ビルドに成功しました。
 
-経過時間 00:00:09.52
+経過時間 00:00:01.68

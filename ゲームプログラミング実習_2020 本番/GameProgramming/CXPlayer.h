@@ -15,6 +15,7 @@ public:
 	CCollider mAshi1;
 	CCollider mAshi2;
 	CCollider mSight;
+	static bool mLook;
 	static bool mInSight;
 	bool mHyuu;
 	//デフォルトコンストラクタ

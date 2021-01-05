@@ -15,6 +15,7 @@ public:
 	CCollider mColSphereSword2; //Œ•
 	CCollider mSearch;
 	CCollider mSearchA;
+	static CXEnemy*mEnemy;
 	void Init(CModelX*model);
 	CXEnemy(CVector position, CVector rotation, CVector scale);
 	void Collision(CCollider*m, CCollider*y);
