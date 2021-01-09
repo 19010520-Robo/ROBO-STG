@@ -28,6 +28,7 @@ public:
 	bool mKAKUNIN;
 	bool mSWORD;
 	bool mHANTEI;
+	bool mKAIHI;
 };
 
 class CXEnemy2 :public CCharacter{

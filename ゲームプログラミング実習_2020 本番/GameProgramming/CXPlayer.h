@@ -17,6 +17,8 @@ public:
 	CCollider mSight;
 	static bool mLook;
 	static bool mInSight;
+	static bool mAttack;
+	bool mRengeki;
 	bool mHyuu;
 	//デフォルトコンストラクタ
 	CXPlayer();

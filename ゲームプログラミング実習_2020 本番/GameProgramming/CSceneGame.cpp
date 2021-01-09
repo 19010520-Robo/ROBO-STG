@@ -81,7 +81,9 @@ void CSceneGame::Update() {
 	//CRes::sModelX.AnimateFrame();
 	////フレームの合成行列を計算する
 	//CRes::sModelX.mFrame[0]->AnimateCombined(&Matrix);
+
 	mEye.mPosition = Player.mPosition;
+	mEye.mRotation.mY = Player.mRotation.mY;
 	//mEye2.mPosition = mEnemy3->mPosition;
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
@@ -91,9 +93,6 @@ void CSceneGame::Update() {
 	//上方向を求める
 	u = CVector(0.0, 0.5, 0.0)*mEye.mMatrixRotate;
 	//カメラの設定
-	if (CXPlayer::mLook == false){
-
-	}
 	Camera3D(e.mX, e.mY, e.mZ, c.mX, c.mY, c.mZ, u.mX, u.mY, u.mZ);
 	////x軸＋回転
 	//if (GetKeyState('K') & 0x8000){
@@ -136,4 +135,5 @@ void CSceneGame::Update() {
 
 CSceneGame::~CSceneGame() {
 	delete[]CXEnemy3::mPoint;
+	delete[]CXEnemy::mPoint;
 }

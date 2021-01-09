@@ -4,8 +4,8 @@
 CXPlayer *CXPlayer::mPlayer = 0;
 int CXPlayer::mPLife;
 bool CXPlayer::mInSight = false;
-bool CXPlayer::mLook = true;
-
+bool CXPlayer::mLook = false;
+bool CXPlayer::mAttack = false;
 CXPlayer::CXPlayer()
 :mColSphereBody(this, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereHead(this, CVector(0.0f, 5.0f, -3.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
@@ -29,22 +29,42 @@ CXPlayer::CXPlayer()
 	mHyuu = true;
 	mPlayer = this;
 	mPLife = 3;
+	mRengeki = false;
 }
 
 void CXPlayer::Update(){
+	if (mAnimationIndex == 4 && mRengeki==true){
+		if (CKey::Once(VK_SPACE)){
+			ChangeAnimation(5, false, 20);
+			mAttack = true;
+		}
+	}
+	if (mAnimationIndex == 5){
+		if (mAnimationFrame >= mAnimationFrameSize){
+			ChangeAnimation(6, false, 40);
+			mRengeki = false;
+			mAttack = false;
+		}
+	}
 	if (mAnimationIndex == 3){
 		if (mAnimationFrame >= mAnimationFrameSize){
-			ChangeAnimation(4, false, 30);
+			ChangeAnimation(4, false, 40);
+			mRengeki = true;
+			mAttack = false;
 		}
 	}
-	if (mAnimationIndex == 4){
+	if (mAnimationIndex == 4||mAnimationIndex==6){
 		if (mAnimationFrame >= mAnimationFrameSize){
 			ChangeAnimation(0, true, 60);
+			mRengeki = false;
+
 		}
 	}
+
 	if (CKey::Once(VK_SPACE)){
 		if (mAnimationIndex == 0 || mAnimationIndex == 1){
-			ChangeAnimation(3, false, 30);
+			ChangeAnimation(3, false, 40);
+			mAttack = true;
 		}
 		CXCharacter::Update();
 	}
@@ -111,7 +131,7 @@ void CXPlayer::Update(){
 		{
 			kasokuC = 0;
 		}
-		if (mLook == true){
+		if (mLook == false){
 			if (CKey::Push('J')){
 				mRotation.mY += 3;
 			}
@@ -121,9 +141,9 @@ void CXPlayer::Update(){
 		}
 		if (mInSight == true){
 			if (CKey::Once('Q')){
-				mLook = false;
+				mLook = true;
 			}
-			if (mLook == false){
+			if (mLook == true){
 				CVector dir = CXEnemy::mEnemy->mPosition - mPosition;
 				//¶•ûŒü‚ÌƒxƒNƒgƒ‹‚ð‹‚ß‚é
 				CVector left = CVector(1.0f, 0.0f, 0.0f)*
@@ -191,12 +211,14 @@ void CXPlayer::Collision(CCollider*mp, CCollider*yp){
 			if (mp->mTag == CCollider::ESIGHT){
 				switch (yp->mpParent->mTag){
 				case EENEMY:
-					if (CCollider::EEBODY){
+					if (yp->mTag == CCollider::EEBODY){
 						mInSight = true;
 					}
 				}
 			}
 		}
 	}
-
+	else{
+		mInSight = false;
+	}
 }

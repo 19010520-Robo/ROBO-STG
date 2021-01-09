@@ -13,7 +13,7 @@ CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 , mColSphereSword0(this, CVector(0.7f, 3.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereSword1(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereSword2(this, CVector(0.3f, 1.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
-, mSearch(this, CVector(0.0f, 0.0f, -7.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 15.0f)
+, mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 25.0f)
 , mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 3.0f)
 {
 	mTag = EENEMY;
@@ -29,7 +29,7 @@ CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 	mKAKUNIN = false;
 	mSWORD = false;
 	mEnemy = this;
-
+	mKAIHI = false;
 }
 void CXEnemy::Init(CModelX*model)
 {
@@ -86,8 +86,12 @@ void CXEnemy::Update(){
 		else if (left.Dot(dir) < 0.0f){
 			mRotation.mY += 5.0f;
 		}
-		mPosition = CVector(0.0f, 0.0f, -0.15f)*mMatrix;
-
+		if (mKAIHI == false){
+			mPosition = CVector(0.0f, 0.0f, -0.15f)*mMatrix;
+		}
+		if (mKAIHI==true){
+			mPosition = CVector(0.0f, 0.0f, 0.3f)*mMatrix;
+		}
 	}
 	if (mSWORD == true){
 		ChangeAnimation(7, true, 60);
@@ -131,6 +135,12 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 				case EPLAYER:
 					if (y->mTag == CCollider::EPBODY){
 						mSWORD = true;
+					}
+					if (CXPlayer::mAttack == true){
+						mKAIHI = true;
+					}
+					if (CXPlayer::mAttack == false){
+						mKAIHI = false;
 					}
 				}
 			}
@@ -259,7 +269,6 @@ void CXEnemy3::Collision(CCollider*ms, CCollider*ys){
 				}
 			}
 			else{
-				CXEnemy3::Senser = false;
 				switch (ys->mpParent->mTag){
 				case EPOINT:
 					if (ys->mpParent == mpPoint){
@@ -273,5 +282,8 @@ void CXEnemy3::Collision(CCollider*ms, CCollider*ys){
 				}
 			}
 		}
+	}
+	else{
+		CXEnemy3::Senser = false;
 	}
 }

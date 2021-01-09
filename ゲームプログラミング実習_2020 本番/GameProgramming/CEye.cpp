@@ -13,12 +13,14 @@ CEye::CEye(CModel*model, CVector position, CVector rotation, CVector scale)
 	mScale = scale;
 }
 void CEye::Update(){
-	if (CKey::Push('J')){
-		mRotation.mY += 3;
-	}
-	if (CKey::Push('L')){
-		mRotation.mY -= 3;
-	}
+	//if (CXPlayer::mLook == false){
+	//	if (CKey::Push('J')){
+	//		mRotation.mY += 3;
+	//	}
+	//	if (CKey::Push('L')){
+	//		mRotation.mY -= 3;
+	//	}
+	//}
 	if (CKey::Push('I')){
 		mRotation.mX -= 1.0;
 	}
