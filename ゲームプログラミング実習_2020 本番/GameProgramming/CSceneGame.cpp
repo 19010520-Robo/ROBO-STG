@@ -83,15 +83,28 @@ void CSceneGame::Update() {
 	//CRes::sModelX.mFrame[0]->AnimateCombined(&Matrix);
 
 	mEye.mPosition = Player.mPosition;
-	mEye.mRotation.mY = Player.mRotation.mY;
+	if (CXPlayer::mLook == true){
+		mEye.mRotation.mY = Player.mRotation.mY;
+	}
 	//mEye2.mPosition = mEnemy3->mPosition;
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
-	e = CVector(0.0, 5.5,  -6.0)*mEye.mMatrix;
-	//注視点を求める
-	c = CVector(0.0, 0.0, 30.0)*mEye.mMatrix; //Player.mPosition;
-	//上方向を求める
-	u = CVector(0.0, 0.5, 0.0)*mEye.mMatrixRotate;
+	if (CXPlayer::mLook == false){
+		e = CVector(0.0, 5.5, -7.0)*mEye.mMatrix;
+		//注視点を求める
+		c = CVector(0.0, 0.0, 30.0)*mEye.mMatrix; //Player.mPosition;
+		//上方向を求める
+		u = CVector(0.0, 0.5, 0.0)*mEye.mMatrixRotate;
+
+	}
+	if (CXPlayer::mLook == true){
+		e = CVector(-2.5, 3.5, -6.0)*mEye.mMatrix;
+		//注視点を求める
+		c = CVector(0.0, 0.0, 30.0)*mEye.mMatrix; //Player.mPosition;
+		//上方向を求める
+		u = CVector(0.0, 0.5, 0.0)*mEye.mMatrixRotate;
+
+	}
 	//カメラの設定
 	Camera3D(e.mX, e.mY, e.mZ, c.mX, c.mY, c.mZ, u.mX, u.mY, u.mZ);
 	////x軸＋回転

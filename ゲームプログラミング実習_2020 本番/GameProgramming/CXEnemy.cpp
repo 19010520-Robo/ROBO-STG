@@ -8,28 +8,37 @@ int CXEnemy::mPointSize = 0;
 CXEnemy3*CXEnemy3::mEnemy3 = 0;
 bool CXEnemy3::Senser = false;
 CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
-:mColSphereBody(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.0f)
+:mColSphereBody(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 2.0f)
 , mColSphereHead(this, CVector(0.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.5f)
 , mColSphereSword0(this, CVector(0.7f, 3.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereSword1(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereSword2(this, CVector(0.3f, 1.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
-, mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 25.0f)
-, mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 3.0f)
+, mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 50.0f)
+, mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 20.0f)
+, mSearchB(this, CVector(0.0f, 2.5f, -1.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 2.0f)
 {
 	mTag = EENEMY;
-
+	EHP = 200;
+	X = 0;
+	Y = 0;
+	Counter = 0;
 	mPosition = position;//位置の設定
 	mRotation = rotation;//回転の設定
 	mScale = scale;//拡縮の設定
 	mColSphereBody.mTag = CCollider::EEBODY;
 	mSearch.mTag = CCollider::ESEARCH;
 	mSearchA.mTag = CCollider::ESEARCHA;
+	mSearchB.mTag = CCollider::ESEARCHB;
 	mPointCnt = 0;//最初のポイントを設定
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定
 	mKAKUNIN = false;
 	mSWORD = false;
 	mEnemy = this;
 	mKAIHI = false;
+	mKnockBack = false;
+	mDown = false;
+	mHangeki = false;
+	mStop = false;
 }
 void CXEnemy::Init(CModelX*model)
 {
@@ -48,63 +57,122 @@ void CXEnemy::Update(){
 	{
 		return;
 	}
-	if (mKAKUNIN == false){
-		CVector dir = mpPoint->mPosition - mPosition;
-		//左方向のベクトルを求める
-		CVector left = CVector(1.0f, 0.0f, 0.0f)*
-			CMatrix().RotateY(mRotation.mY);
-		//CVector right = CVector(-1.0f, 0.0f, 0.0f)*
-		//	CMatrix().RotateY(mRotation.mY);
-		//上方向のベクトルを求める
-		/*CVector up = CVector(0.0f, 1.0f, 0.0f)*
+	if (EHP<1){
+		ChangeAnimation(11, false, 90);
+		if (mAnimationFrame >= mAnimationFrameSize){
+			mEnabled = false;
+		}
+	}
+	if (EHP > 0){
+		if (mKAKUNIN == false){
+			CVector dir = mpPoint->mPosition - mPosition;
+			//左方向のベクトルを求める
+			CVector left = CVector(1.0f, 0.0f, 0.0f)*
+				CMatrix().RotateY(mRotation.mY);
+			//CVector right = CVector(-1.0f, 0.0f, 0.0f)*
+			//	CMatrix().RotateY(mRotation.mY);
+			//上方向のベクトルを求める
+			/*CVector up = CVector(0.0f, 1.0f, 0.0f)*
+				CMatrix().RotateX(mRotation.mX)*
+				CMatrix().RotateY(mRotation.mY);*/
+			//左右の回転処理
+			if (left.Dot(dir) > 0.0f){
+				mRotation.mY -= 1.5f;
+			}
+			else if (left.Dot(dir) < 0.0f){
+				mRotation.mY += 1.5f;
+			}
+		}
+		if (mKAKUNIN == true&&mDown==false&&mKnockBack==false){
+			CVector dir = CXPlayer::mPlayer->mPosition - mPosition;
+			//左方向のベクトルを求める
+			CVector left = CVector(1.0f, 0.0f, 0.0f)*
+				CMatrix().RotateY(mRotation.mY);
+			//CVector right = CVector(-1.0f, 0.0f, 0.0f)*
+			//	CMatrix().RotateY(mRotation.mY);
+			//上方向のベクトルを求める
+			/*CVector up = CVector(0.0f, 1.0f, 0.0f)*
 			CMatrix().RotateX(mRotation.mX)*
 			CMatrix().RotateY(mRotation.mY);*/
-		//左右の回転処理
-		if (left.Dot(dir) > 0.0f){
-			mRotation.mY -= 1.5f;
+			//左右の回転処理
+			if (left.Dot(dir) > 0.0f){
+				mRotation.mY -= 5.0f;
+			}
+			else if (left.Dot(dir) < 0.0f){
+				mRotation.mY += 5.0f;
+			}
+			if (mKAIHI == false){
+				mPosition = CVector(0.0f, 0.0f, -0.1f)*mMatrix;
+			}
+			if (mKAIHI == true){
+				mPosition = CVector(0.0f, 0.0f, 0.3f)*mMatrix;
+			}
 		}
-		else if (left.Dot(dir) < 0.0f){
-			mRotation.mY += 1.5f;
+		if (mStop == true){
+			mPosition = CVector(0.0f, 0.0f, 0.0f)*mMatrix;
 		}
-		mPosition = CVector(0.0f, 0.0f, -0.1f)*mMatrix;
-	}
-	if (mKAKUNIN == true){
-		CVector dir = CXPlayer::mPlayer->mPosition - mPosition;
-		//左方向のベクトルを求める
-		CVector left = CVector(1.0f, 0.0f, 0.0f)*
-			CMatrix().RotateY(mRotation.mY);
-		//CVector right = CVector(-1.0f, 0.0f, 0.0f)*
-		//	CMatrix().RotateY(mRotation.mY);
-		//上方向のベクトルを求める
-		/*CVector up = CVector(0.0f, 1.0f, 0.0f)*
-		CMatrix().RotateX(mRotation.mX)*
-		CMatrix().RotateY(mRotation.mY);*/
-		//左右の回転処理
-		if (left.Dot(dir) > 0.0f){
-			mRotation.mY -= 5.0f;
+		if (mSWORD == true && mKnockBack == false && mDown == false){
+			ChangeAnimation(7, true, 60);
+			if (mStop == false){
+				mPosition = CVector(0.0f, 0.0f, -0.35f)*mMatrix;
+			}
+			if (mAnimationFrame > 35){
+				if (mStop == false){
+					mPosition = CVector(0.0f, 0.0f, -0.01f)*mMatrix;
+				}
+			}
+			if (mAnimationFrame >= mAnimationFrameSize&&mAnimationIndex == 7){
+				mSWORD = false;
+				mStop = false;
+			}
 		}
-		else if (left.Dot(dir) < 0.0f){
-			mRotation.mY += 5.0f;
+		if (mSWORD == false && mKnockBack == false && mDown == false && mHangeki == false){
+			ChangeAnimation(1, true, 30);
 		}
-		if (mKAIHI == false){
-			mPosition = CVector(0.0f, 0.0f, -0.15f)*mMatrix;
+		if (Counter > 999){
+			mHangeki = true;
 		}
-		if (mKAIHI==true){
-			mPosition = CVector(0.0f, 0.0f, 0.3f)*mMatrix;
+		if (mHangeki == true){
+			ChangeAnimation(8, false, 99);
+			if (mAnimationFrame < 98){
+				mRotation.mY += 29.9f;
+			}
+			if (mAnimationFrame >= mAnimationFrameSize&&mAnimationIndex == 8){
+				Counter = 0;
+				mHangeki = false;
+				X = 0;
+				Y = 0;
+				mDown = false;
+				mKnockBack = false;
+			}
 		}
-	}
-	if (mSWORD == true){
-		ChangeAnimation(7, true, 60);
-		mPosition = CVector(0.0f, 0.0f, -0.01f)*mMatrix;
-		if (mAnimationFrame > 35){
-			mPosition = CVector(0.0f, 0.0f, -0.25f)*mMatrix;
+		if (mHangeki == false){
+			if (mKnockBack == true){
+				ChangeAnimation(2, false, 100);
+				mPosition = CVector(0.0f, 0.0f, 0.07)*mMatrix;
+			}
+			if (X > 0){
+				X--;
+			}
+			if (X == 0){
+				mKnockBack = false;
+			}
 		}
-		if (mAnimationFrame == 60){
-			mSWORD = false;
+		if (mHangeki == false){
+			if (mDown == true){
+				ChangeAnimation(11, false, 60);
+				if (EHP < 1 && mAnimationFrame>50 && mAnimationIndex == 11){
+					mAnimationFrame = 60;
+				}
+			}
+			if (Y > 0){
+				mPosition = CVector(0.0f, 0.0f, 0.25f)*mMatrix;
+				Y--;
+			}
+			if (Y == 0 && mAnimationFrame >= mAnimationFrameSize&&EHP > 0){
+				mDown = false;
+			}
 		}
-	}
-	if (mSWORD == false){
-		ChangeAnimation(1, true , 30);
 	}
 	////上下の回転処理
 	//if (up.Dot(dir)>0.0f){
@@ -128,6 +196,11 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 					if (y->mTag==CCollider::EPBODY){
 						mKAKUNIN = true;
 					}
+					if (y->mTag == CCollider::ESWORD){
+						if (CXPlayer::mAttack == false){
+							//mKAIHI = false;
+						}
+					}
 				}
 			}
 			if (m->mTag == CCollider::ESEARCHA){
@@ -136,11 +209,38 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 					if (y->mTag == CCollider::EPBODY){
 						mSWORD = true;
 					}
-					if (CXPlayer::mAttack == true){
-						mKAIHI = true;
+					if (y->mTag == CCollider::ESWORD){
+						if (CXPlayer::mAttack == true){
+							//mKAIHI = true;
+						}
 					}
-					if (CXPlayer::mAttack == false){
-						mKAIHI = false;
+				}
+			}
+			if (m->mTag == CCollider::EEBODY){
+				switch (y->mpParent->mTag){
+				case EPLAYER:
+					if (y->mTag == CCollider::ESWORD&&CXPlayer::mAttack==true){
+						mKnockBack = true;
+						CXPlayer::mAttack = false;
+						EHP -= 5+rand()%10;
+						X += 25;
+						Counter += 70+rand()%30;
+					}
+					if (y->mTag == CCollider::ESWORD&&CXPlayer::mAttackS == true){
+						X = 0;
+						mDown = true;
+						CXPlayer::mAttackS = false;
+						EHP -= 10+rand()%15;
+						Y += 25;
+						Counter += 400+rand()%200;
+					}
+				}
+			}
+			if (m->mTag == CCollider::ESEARCHB){
+				switch (y->mpParent->mTag){
+				case EPLAYER:
+					if (y->mTag == CCollider::EPBODY){
+						mStop = true;
 					}
 				}
 			}

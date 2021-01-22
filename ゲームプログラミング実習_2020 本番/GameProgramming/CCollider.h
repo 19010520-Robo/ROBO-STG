@@ -18,6 +18,7 @@ public:
 		ESEARCH2,//サーチ2
 		ESEARCH3,//回避用サーチ
 		ESEARCHA,//攻撃用サーチ
+		ESEARCHB,
 		ESWORD,//剣
 		EBULLET,
 		EBULLETE,

@@ -5,7 +5,6 @@
 #include"CCollider.h"
 class CEye :public CCharacter{
 public:
-	int FireCount;
 	//デフォルトコンストラクタ
 	CEye(CModel*model, CVector position, CVector rotation, CVector scale);
 	//更新処理

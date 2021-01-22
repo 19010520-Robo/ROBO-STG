@@ -6,6 +6,7 @@ int CXPlayer::mPLife;
 bool CXPlayer::mInSight = false;
 bool CXPlayer::mLook = false;
 bool CXPlayer::mAttack = false;
+bool CXPlayer::mAttackS = false;
 CXPlayer::CXPlayer()
 :mColSphereBody(this, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
 , mColSphereHead(this, CVector(0.0f, 5.0f, -3.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
@@ -21,7 +22,6 @@ CXPlayer::CXPlayer()
 	mColSphereBody.mTag = CCollider::EPBODY;
 	mColSphereSword.mTag = CCollider::ESWORD;
 	mSight.mTag = CCollider::ESIGHT;
-
 	mVelovcityJump = 0;
 	kasoku = 0;
 	kasokuB = 0;
@@ -30,106 +30,114 @@ CXPlayer::CXPlayer()
 	mPlayer = this;
 	mPLife = 3;
 	mRengeki = false;
+	mStop = false;
+	mCancel = false;
 }
 
 void CXPlayer::Update(){
 	if (mAnimationIndex == 4 && mRengeki==true){
 		if (CKey::Once(VK_SPACE)){
 			ChangeAnimation(5, false, 20);
-			mAttack = true;
+			mPosition = CVector(0.0f, 0.0f, 1.0f)*mMatrix;
+			mAttackS = true;
 		}
 	}
 	if (mAnimationIndex == 5){
 		if (mAnimationFrame >= mAnimationFrameSize){
 			ChangeAnimation(6, false, 40);
 			mRengeki = false;
-			mAttack = false;
 		}
 	}
 	if (mAnimationIndex == 3){
 		if (mAnimationFrame >= mAnimationFrameSize){
 			ChangeAnimation(4, false, 40);
 			mRengeki = true;
-			mAttack = false;
 		}
 	}
 	if (mAnimationIndex == 4||mAnimationIndex==6){
 		if (mAnimationFrame >= mAnimationFrameSize){
 			ChangeAnimation(0, true, 60);
 			mRengeki = false;
-
+			mAttack = false;
+			mAttackS = false;
+			mStop = false;
 		}
 	}
 
 	if (CKey::Once(VK_SPACE)){
 		if (mAnimationIndex == 0 || mAnimationIndex == 1){
 			ChangeAnimation(3, false, 40);
+			mPosition = CVector(0.0f, 0.0f, 1.0f)*mMatrix;
 			mAttack = true;
+			mStop = true;
 		}
 		CXCharacter::Update();
 	}
 	else{
-		if (CKey::Push('W')){
-			ChangeAnimation(1, true, 60);
-			mPosition = CVector(0.0f, 0.0f, 0.2f + kasoku)*mMatrix;
-			if (hayasa > 0){
-				hayasa--;
+		if (mStop == false){
+			if (CKey::Push('W')){
+				ChangeAnimation(1, true, 60);
+				mPosition = CVector(0.0f, 0.0f, 0.2f + kasoku)*mMatrix;
+				if (hayasa > 0){
+					hayasa--;
+				}
+				else if (CKey::Push('B') && kasoku<0.5f){
+					kasoku += 0.15f;
+					hayasa = 10;
+				}
+				else if (kasoku > 0.0f){
+					kasoku -= 0.04f;
+				}
 			}
-			else if (CKey::Push('B')&&kasoku<0.5f){
-				kasoku += 0.15f;
-				hayasa = 10;
+			else
+			{
+				kasoku = 0;
+				if (mAnimationIndex == 1){
+					ChangeAnimation(0, true, 60);
+				}
 			}
-			else if (kasoku > 0.0f){
-				kasoku -= 0.04f;
+			if (CKey::Push('S')){
+				ChangeAnimation(1, true, 60);
+				mPosition = CVector(0.0f, 0.0f, -0.2f)*mMatrix;
 			}
-		}
-		else
-		{
-			kasoku = 0;
-			if (mAnimationIndex == 1){
-				ChangeAnimation(0, true, 60);
-			}
-		}
-		if (CKey::Push('S')){
-			ChangeAnimation(1, true, 60);
-			mPosition = CVector(0.0f, 0.0f, -0.2f)*mMatrix;
-		}
 
-		if (CKey::Push('A')){
-			kasoku = 0;
-			mPosition = CVector(0.2f + kasokuB, 0.0f, 0.0f)*mMatrix;
-			if (hayasa > 0){
-				hayasa--;
+			if (CKey::Push('A')){
+				kasoku = 0;
+				mPosition = CVector(0.2f + kasokuB, 0.0f, 0.0f)*mMatrix;
+				if (hayasa > 0){
+					hayasa--;
+				}
+				else if (CKey::Push('B') && kasokuB<0.4f){
+					kasokuB += 0.2f;
+					hayasa = 10;
+				}
+				else if (kasokuB > 0.0f){
+					kasokuB -= 0.05f;
+				}
 			}
-			else if (CKey::Push('B') && kasokuB<0.4f){
-				kasokuB += 0.2f;
-				hayasa = 10;
+			else
+			{
+				kasokuB = 0;
 			}
-			else if (kasokuB > 0.0f){
-				kasokuB -= 0.05f;
+			if (CKey::Push('D')){
+				kasoku = 0;
+				mPosition = CVector(-0.2f + kasokuC, 0.0f, 0.0f)*mMatrix;
+				if (hayasa > 0){
+					hayasa--;
+				}
+				else if (CKey::Push('B') && kasokuC >= -0.4){
+					kasokuC -= 0.2f;
+					hayasa = 20;
+				}
+				else if (kasokuC < 0.0f){
+					kasokuC += 0.05f;
+				}
 			}
-		}
-		else
-		{
-			kasokuB = 0;
-		}
-		if (CKey::Push('D')){
-			kasoku = 0;
-			mPosition = CVector(-0.2f + kasokuC, 0.0f, 0.0f)*mMatrix;
-			if (hayasa > 0){
-				hayasa--;
+
+			else
+			{
+				kasokuC = 0;
 			}
-			else if (CKey::Push('B') && kasokuC >= -0.4){
-				kasokuC -= 0.2f;
-				hayasa = 20;
-			}
-			else if (kasokuC < 0.0f){
-				kasokuC += 0.05f;
-			}
-		}
-		else
-		{
-			kasokuC = 0;
 		}
 		if (mLook == false){
 			if (CKey::Push('J')){
@@ -139,8 +147,11 @@ void CXPlayer::Update(){
 				mRotation.mY -= 3;
 			}
 		}
+		if (mInSight == false){
+			mLook = false;
+		}
 		if (mInSight == true){
-			if (CKey::Once('Q')){
+			if (CKey::Push('Q')){
 				mLook = true;
 			}
 			if (mLook == true){
@@ -158,16 +169,12 @@ void CXPlayer::Update(){
 					mRotation.mY -= 1.0f;
 				}
 			}
+			mInSight = false;
 		}
 	}
 	if (CKey::Once('T')&&mHyuu==true){
 		mVelovcityJump = JUMPV0;
 		mHyuu = false;
-	}
-	if (CKey::Push('F') && mHyuu == false){
-		if (mVelovcityJump < 0.4f){
-			mVelovcityJump += 0.035f;
-		}
 	}
 	mVelovcityJump = mVelovcityJump - G;
 	mPosition.mY = mPosition.mY + mVelovcityJump;
@@ -213,12 +220,10 @@ void CXPlayer::Collision(CCollider*mp, CCollider*yp){
 				case EENEMY:
 					if (yp->mTag == CCollider::EEBODY){
 						mInSight = true;
+
 					}
 				}
 			}
 		}
-	}
-	else{
-		mInSight = false;
 	}
 }

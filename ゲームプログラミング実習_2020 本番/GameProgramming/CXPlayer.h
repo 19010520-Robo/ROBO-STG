@@ -18,8 +18,10 @@ public:
 	static bool mLook;
 	static bool mInSight;
 	static bool mAttack;
+	static bool mAttackS;
 	bool mRengeki;
 	bool mHyuu;
+	bool mCancel;
 	//デフォルトコンストラクタ
 	CXPlayer();
 	//更新処理
@@ -33,6 +35,7 @@ public:
 	float kasokuB;
 	float kasokuC;
 	static int mPLife;
+	bool mStop;
 };
 
 

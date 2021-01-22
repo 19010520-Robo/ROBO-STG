@@ -8,6 +8,10 @@
 class CXEnemy :public CXCharacter{
 public:
 	int FireCount;
+	int EHP;
+	int X;
+	int Y;
+	int Counter;
 	CCollider mColSphereBody;  //‘Ì
 	CCollider mColSphereHead;  //“ª
 	CCollider mColSphereSword0; //Œ•
@@ -15,6 +19,7 @@ public:
 	CCollider mColSphereSword2; //Œ•
 	CCollider mSearch;
 	CCollider mSearchA;
+	CCollider mSearchB;
 	static CXEnemy*mEnemy;
 	void Init(CModelX*model);
 	CXEnemy(CVector position, CVector rotation, CVector scale);
@@ -29,6 +34,10 @@ public:
 	bool mSWORD;
 	bool mHANTEI;
 	bool mKAIHI;
+	bool mKnockBack;
+	bool mDown;
+	bool mHangeki;
+	bool mStop;
 };
 
 class CXEnemy2 :public CCharacter{
