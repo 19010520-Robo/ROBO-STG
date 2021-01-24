@@ -12,6 +12,7 @@ public:
 	int X;
 	int Y;
 	int Counter;
+	int T;
 	CCollider mColSphereBody;  //‘Ì
 	CCollider mColSphereHead;  //“ª
 	CCollider mColSphereSword0; //Œ•
@@ -20,6 +21,7 @@ public:
 	CCollider mSearch;
 	CCollider mSearchA;
 	CCollider mSearchB;
+	int Time;
 	static CXEnemy*mEnemy;
 	void Init(CModelX*model);
 	CXEnemy(CVector position, CVector rotation, CVector scale);
@@ -38,6 +40,10 @@ public:
 	bool mDown;
 	bool mHangeki;
 	bool mStop;
+	static bool mEAttack;
+	static bool mEAttackS;
+	static bool mDeath;
+
 };
 
 class CXEnemy2 :public CCharacter{

@@ -73,7 +73,9 @@ void CSceneGame::Init() {
 void CSceneGame::Update() {
 	
 	//キャラクタークラスの更新0
-	TaskManager.Update();
+	if (CXEnemy::mDeath == false){
+		TaskManager.Update();
+	}
 	//最初のアニメーションの現在時間を45にする
 	////最初のアニメーションの重みを1.0(100%)にする
 	//CRes::sModelX.mAnimationSet[0]->mWeight = 1.0f;
@@ -133,12 +135,27 @@ void CSceneGame::Update() {
 	TaskManager.Render();
 	//  CRes::sModelX.Render();
 	CollisionManager.Render();
+	static int frame = 0;//フレーム数のカウント
+	frame++;//フレーム数のカウント
 
 	//テクスチャテスト
 	//CRes::sModelX.mMaterial[0]->mpTexture->DrawImage
 	//	(-5, 5, -5, 5, 0, 128, 128, 0);
 	//2D描画開始
 	Start2D(0, 800, 0, 600);
+	sprintf(buf, "%d", CXPlayer::PHP);
+	CText::DrawString(buf, 45, 550, 25, 25);
+	CText::DrawString("HP", 40, 590, 10, 10);
+	if (frame < 150){
+		//2D描画
+		CText::DrawString("GAME START", 170, 400, 20, 20);
+	}
+	if (CXEnemy::mDeath==true){
+		CText::DrawString("GAME CLAER!", 180, 400, 20, 20);
+	}
+	if (CXPlayer::mPDeath == true){
+		CText::DrawString("GAME OVER!", 180, 400, 20, 20);
+	}
 
 
 	//2D描画終了
@@ -150,3 +167,32 @@ CSceneGame::~CSceneGame() {
 	delete[]CXEnemy3::mPoint;
 	delete[]CXEnemy::mPoint;
 }
+void CSceneGame::Start2D(float left, float right, float bottom, float top){
+	//モデルビュー行列の退選
+	glPushMatrix();
+	//モデルビュー行列の初期化
+	glLoadIdentity();
+
+	//モデルビュー行列から
+	//プロジェクション行列へ切り替え
+	glMatrixMode(GL_PROJECTION);
+	//プロジェクション行列の退選
+	glPushMatrix();
+	//プロジェクション行列の初期化
+	glLoadIdentity();
+	//2D描画の設定
+	gluOrtho2D(left, right, bottom, top);
+	//Depthテストオフ
+	glDisable(GL_DEPTH_TEST);
+}
+void CSceneGame::End2D(){
+	//プロジェクション行列を戻す
+	glPopMatrix();
+	//モデルビューモードへ切り替え
+	glMatrixMode(GL_MODELVIEW);
+	//モデルビュー行列を戻す
+	glPopMatrix();
+	//Depthテストオン
+	glEnable(GL_DEPTH_TEST);
+}
+

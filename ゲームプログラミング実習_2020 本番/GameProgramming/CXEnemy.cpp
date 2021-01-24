@@ -7,21 +7,27 @@ CPoint *CXEnemy::mPoint;
 int CXEnemy::mPointSize = 0;
 CXEnemy3*CXEnemy3::mEnemy3 = 0;
 bool CXEnemy3::Senser = false;
+bool CXEnemy::mEAttack = false;
+bool CXEnemy::mEAttackS = false;
+bool CXEnemy::mDeath = false;
+
 CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 :mColSphereBody(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 2.0f)
 , mColSphereHead(this, CVector(0.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.5f)
-, mColSphereSword0(this, CVector(0.7f, 3.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
-, mColSphereSword1(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
-, mColSphereSword2(this, CVector(0.3f, 1.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
+, mColSphereSword0(this, CVector(0.7f, 3.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.6f)
+, mColSphereSword1(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.4f)
+, mColSphereSword2(this, CVector(0.3f, 1.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.3f)
 , mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 50.0f)
 , mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 20.0f)
-, mSearchB(this, CVector(0.0f, 2.5f, -1.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 2.0f)
+, mSearchB(this, CVector(0.0f, 2.5f, -2.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 2.0f)
 {
 	mTag = EENEMY;
 	EHP = 200;
 	X = 0;
 	Y = 0;
+	T = 0;
 	Counter = 0;
+	Time = T * 60;
 	mPosition = position;//位置の設定
 	mRotation = rotation;//回転の設定
 	mScale = scale;//拡縮の設定
@@ -29,6 +35,10 @@ CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 	mSearch.mTag = CCollider::ESEARCH;
 	mSearchA.mTag = CCollider::ESEARCHA;
 	mSearchB.mTag = CCollider::ESEARCHB;
+	mColSphereSword0.mTag = CCollider::EESWORD;
+	mColSphereSword1.mTag = CCollider::EESWORD;
+	mColSphereSword2.mTag = CCollider::EESWORD;
+
 	mPointCnt = 0;//最初のポイントを設定
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定
 	mKAKUNIN = false;
@@ -61,6 +71,7 @@ void CXEnemy::Update(){
 		ChangeAnimation(11, false, 90);
 		if (mAnimationFrame >= mAnimationFrameSize){
 			mEnabled = false;
+			mDeath = true;
 		}
 	}
 	if (EHP > 0){
@@ -82,6 +93,7 @@ void CXEnemy::Update(){
 			else if (left.Dot(dir) < 0.0f){
 				mRotation.mY += 1.5f;
 			}
+			mPosition = CVector(0.0f, 0.0f, -0.1f)*mMatrix;
 		}
 		if (mKAKUNIN == true&&mDown==false&&mKnockBack==false){
 			CVector dir = CXPlayer::mPlayer->mPosition - mPosition;
@@ -112,12 +124,21 @@ void CXEnemy::Update(){
 			mPosition = CVector(0.0f, 0.0f, 0.0f)*mMatrix;
 		}
 		if (mSWORD == true && mKnockBack == false && mDown == false){
-			ChangeAnimation(7, true, 60);
+			ChangeAnimation(7, true, 80);
 			if (mStop == false){
-				mPosition = CVector(0.0f, 0.0f, -0.35f)*mMatrix;
+				if (mAnimationFrame<30){
+					mPosition = CVector(0.0f, 0.0f, 0.0f)*mMatrix;
+				}
+				if (mAnimationFrame >= 30){
+					mPosition = CVector(0.0f, 0.0f, -0.35f)*mMatrix;
+				}
 			}
-			if (mAnimationFrame > 35){
+			if (mAnimationFrame == 30){
+				mEAttack = true;
+			}
+			if (mAnimationFrame > 50){
 				if (mStop == false){
+					mEAttack = false;
 					mPosition = CVector(0.0f, 0.0f, -0.01f)*mMatrix;
 				}
 			}
@@ -131,14 +152,17 @@ void CXEnemy::Update(){
 		}
 		if (Counter > 999){
 			mHangeki = true;
+			mSWORD = false;
+			mStop = false;
 		}
 		if (mHangeki == true){
-			ChangeAnimation(8, false, 99);
-			if (mAnimationFrame < 98){
-				mRotation.mY += 29.9f;
-			}
-			if (mAnimationFrame >= mAnimationFrameSize&&mAnimationIndex == 8){
+			ChangeAnimation(7, false, 40);
+			mPosition = CVector(0.0f, 0.0f, 0.06f)*mMatrix;
+			mEAttack = false;
+			mEAttackS = true;
+			if (mAnimationFrame >= mAnimationFrameSize&&mAnimationIndex == 7){
 				Counter = 0;
+				mEAttackS = false;
 				mHangeki = false;
 				X = 0;
 				Y = 0;
@@ -149,7 +173,7 @@ void CXEnemy::Update(){
 		if (mHangeki == false){
 			if (mKnockBack == true){
 				ChangeAnimation(2, false, 100);
-				mPosition = CVector(0.0f, 0.0f, 0.07)*mMatrix;
+				mPosition = CVector(0.0f, 0.0f, 0.07f)*mMatrix;
 			}
 			if (X > 0){
 				X--;
@@ -198,7 +222,7 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 					}
 					if (y->mTag == CCollider::ESWORD){
 						if (CXPlayer::mAttack == false){
-							//mKAIHI = false;
+							mKAIHI = false;
 						}
 					}
 				}

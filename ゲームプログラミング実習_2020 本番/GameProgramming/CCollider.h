@@ -20,6 +20,7 @@ public:
 		ESEARCHA,//攻撃用サーチ
 		ESEARCHB,
 		ESWORD,//剣
+		EESWORD,
 		EBULLET,
 		EBULLETE,
 		EMAP,

@@ -8,6 +8,9 @@
 
 class CXPlayer :public CXCharacter{
 public:
+	static int PHP;
+	int X;
+	int Y;
 	float mVelovcityJump;
 	CCollider mColSphereBody;  //体
 	CCollider mColSphereHead;  //頭
@@ -19,9 +22,13 @@ public:
 	static bool mInSight;
 	static bool mAttack;
 	static bool mAttackS;
+	static bool mPDeath;
 	bool mRengeki;
 	bool mHyuu;
 	bool mCancel;
+	bool Down;
+	bool Back;
+	bool Yokeru;
 	//デフォルトコンストラクタ
 	CXPlayer();
 	//更新処理

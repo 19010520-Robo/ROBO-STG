@@ -26,6 +26,11 @@ public:
 	void Update();
 	//キャラクタのインスタンス
 	CMap*mMap;
+	void Start2D(float left, float right, float bottom, float top);
+	//2D描画終了
+	void End2D();
+	char buf[10];
+
 };
 
 #endif
