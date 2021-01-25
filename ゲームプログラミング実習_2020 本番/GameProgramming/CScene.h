@@ -6,6 +6,13 @@
 */
 class CScene {
 public:
+	//シーンの識別子
+	enum EScene {
+		EGAME,	//ゲーム
+		ETITLE, 	//タイトル
+	};
+	//次のシーン
+	EScene mScene;
 
 	//virtual 仮想関数
 	//ポリモーフィズムの実装
@@ -15,6 +22,7 @@ public:
 	//次のシーンの取得
 	//virtual EScene GetNextScene() = 0;
 	virtual ~CScene() {}	//デストラクタの定義
+	virtual EScene GetNextScene() = 0;
 
 	//2D描画スタート
 	//Start2D(左座標, 右座標, 下座標, 上座標)

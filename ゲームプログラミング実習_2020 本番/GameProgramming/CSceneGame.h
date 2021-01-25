@@ -30,6 +30,7 @@ public:
 	//2D•`‰æI—¹
 	void End2D();
 	char buf[10];
+	EScene GetNextScene();
 
 };
 

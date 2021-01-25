@@ -106,6 +106,7 @@
     <ClCompile Include="CTaskManager.cpp" />
     <ClCompile Include="CText.cpp" />
     <ClCompile Include="CTexture.cpp" />
+    <ClCompile Include="CTitle.cpp" />
     <ClCompile Include="CTransform.cpp" />
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="CVector.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="CTaskManager.h" />
     <ClInclude Include="CText.h" />
     <ClInclude Include="CTexture.h" />
+    <ClInclude Include="CTitle.h" />
     <ClInclude Include="CTransform.h" />
     <ClInclude Include="CTriangle.h" />
     <ClInclude Include="CVector.h" />

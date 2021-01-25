@@ -14,9 +14,7 @@ bool CXEnemy::mDeath = false;
 CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 :mColSphereBody(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 2.0f)
 , mColSphereHead(this, CVector(0.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.5f)
-, mColSphereSword0(this, CVector(0.7f, 3.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.6f)
-, mColSphereSword1(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.4f)
-, mColSphereSword2(this, CVector(0.3f, 1.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.3f)
+, mColSphereSword0(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.2f)
 , mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 50.0f)
 , mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 20.0f)
 , mSearchB(this, CVector(0.0f, 2.5f, -2.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 2.0f)
@@ -36,9 +34,6 @@ CXEnemy::CXEnemy(CVector position, CVector rotation, CVector scale)
 	mSearchA.mTag = CCollider::ESEARCHA;
 	mSearchB.mTag = CCollider::ESEARCHB;
 	mColSphereSword0.mTag = CCollider::EESWORD;
-	mColSphereSword1.mTag = CCollider::EESWORD;
-	mColSphereSword2.mTag = CCollider::EESWORD;
-
 	mPointCnt = 0;//最初のポイントを設定
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定
 	mKAKUNIN = false;
@@ -59,14 +54,13 @@ void CXEnemy::Init(CModelX*model)
 	mColSphereHead.mpCombinedMatrix = &mpCombinesMatrix[1];
 	//剣
 	mColSphereSword0.mpCombinedMatrix = &mpCombinesMatrix[26];
-	mColSphereSword1.mpCombinedMatrix = &mpCombinesMatrix[26];
-	mColSphereSword2.mpCombinedMatrix = &mpCombinesMatrix[26];
 }
 void CXEnemy::Update(){
 	if (mpPoint == 0)
 	{
 		return;
 	}
+	//HPが１より小さい時mDeathをtrueにして倒れる
 	if (EHP<1){
 		ChangeAnimation(11, false, 90);
 		if (mAnimationFrame >= mAnimationFrameSize){
@@ -74,6 +68,7 @@ void CXEnemy::Update(){
 			mDeath = true;
 		}
 	}
+	//HPが0より大きいときの処理
 	if (EHP > 0){
 		if (mKAKUNIN == false){
 			CVector dir = mpPoint->mPosition - mPosition;
@@ -123,7 +118,7 @@ void CXEnemy::Update(){
 		if (mStop == true){
 			mPosition = CVector(0.0f, 0.0f, 0.0f)*mMatrix;
 		}
-		if (mSWORD == true && mKnockBack == false && mDown == false){
+		if (mSWORD == true && mKnockBack == false && mDown == false&&mHangeki==false){
 			ChangeAnimation(7, true, 80);
 			if (mStop == false){
 				if (mAnimationFrame<30){
@@ -133,14 +128,11 @@ void CXEnemy::Update(){
 					mPosition = CVector(0.0f, 0.0f, -0.35f)*mMatrix;
 				}
 			}
-			if (mAnimationFrame == 30){
+			if (mAnimationFrame == 25){
 				mEAttack = true;
 			}
-			if (mAnimationFrame > 50){
-				if (mStop == false){
+			if (mAnimationFrame > 70){
 					mEAttack = false;
-					mPosition = CVector(0.0f, 0.0f, -0.01f)*mMatrix;
-				}
 			}
 			if (mAnimationFrame >= mAnimationFrameSize&&mAnimationIndex == 7){
 				mSWORD = false;
@@ -156,10 +148,13 @@ void CXEnemy::Update(){
 			mStop = false;
 		}
 		if (mHangeki == true){
+			mSWORD = false;
 			ChangeAnimation(7, false, 40);
 			mPosition = CVector(0.0f, 0.0f, 0.06f)*mMatrix;
 			mEAttack = false;
-			mEAttackS = true;
+			if (mAnimationFrame == 10){
+				mEAttackS = true;
+			}
 			if (mAnimationFrame >= mAnimationFrameSize&&mAnimationIndex == 7){
 				Counter = 0;
 				mEAttackS = false;

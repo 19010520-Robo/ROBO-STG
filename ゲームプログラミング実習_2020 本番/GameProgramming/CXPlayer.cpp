@@ -12,7 +12,7 @@ int CXPlayer::PHP = 30;
 CXPlayer::CXPlayer()
 :mColSphereBody(this, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.7f)
 , mColSphereHead(this, CVector(0.0f, 5.0f, -3.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
-, mColSphereSword(this, CVector(-10.0f, 10.0f, 50.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.3f)
+, mColSphereSword(this, CVector(-10.0f, 10.0f, 50.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.9f)
 , mAshi1(this, CVector(0.0f, 1.5f, 0.0f), CVector(), CVector(5.0f, 5.0f, 5.0f),0.5f)
 , mAshi2(this, CVector(0.0f, 1.5f, 0.0f), CVector(), CVector(5.0f, 5.0f, 5.0f), 0.5f)
 , mSight(this, CVector(0.0f, 1.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 50.0f)
@@ -293,7 +293,6 @@ void CXPlayer::Collision(CCollider*mp, CCollider*yp){
 				case EENEMY:
 					if (yp->mTag == CCollider::EEBODY){
 						mInSight = true;
-
 					}
 				}
 			}
@@ -306,7 +305,7 @@ void CXPlayer::Collision(CCollider*mp, CCollider*yp){
 						PHP -= 3 + rand() % 3;
 						X += 10;
 					}
-					if (yp->mTag == CCollider::EESWORD&&CXEnemy::mEAttackS == true || yp->mTag == CCollider::EEBODY&&CXEnemy::mEAttack == true){
+					if (yp->mTag == CCollider::EESWORD&&CXEnemy::mEAttackS == true){
 						X = 0;
 						Down = true;
 						CXEnemy::mEAttackS = false;

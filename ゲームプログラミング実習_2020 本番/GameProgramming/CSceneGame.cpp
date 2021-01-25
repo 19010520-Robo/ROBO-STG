@@ -19,6 +19,7 @@ CModel BackGround;
 CModel CSceneGame::mCube;
 CModel ModelEnemy;
 void CSceneGame::Init() {
+	mScene = EGAME;
 
 	CXEnemy3::mPointSize = 3;
 	CXEnemy3::mPoint = new CPoint[CXEnemy3::mPointSize];
@@ -195,4 +196,6 @@ void CSceneGame::End2D(){
 	//Depthテストオン
 	glEnable(GL_DEPTH_TEST);
 }
-
+CScene::EScene CSceneGame::GetNextScene() {
+	return mScene;
+}

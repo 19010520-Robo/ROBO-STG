@@ -43,6 +43,7 @@ public:
 	float kasokuC;
 	static int mPLife;
 	bool mStop;
+	CXPlayer*ENEMY;
 };
 
 
