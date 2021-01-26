@@ -30,6 +30,7 @@ CXPlayer::CXPlayer()
 	kasokuC = 0;
 	X = 0;
 	Y = 0;
+	L = 0;
 	mHyuu = true;
 	mPlayer = this;
 	mPLife = 3;
@@ -222,8 +223,17 @@ void CXPlayer::Update(){
 			if (mInSight == false){
 				mLook = false;
 			}
-			if (mInSight == true){
-				if (CKey::Push('Q')){
+			if (mLook == true){
+				if (CKey::Once('Q')){
+					mLook = false;
+					L = 1;
+					if (L > 0){
+						L--;
+					}
+				}
+			}
+			if (mInSight == true&&L==0){
+				if (CKey::Once('Q')){
 					mLook = true;
 				}
 				if (mLook == true){

@@ -64,6 +64,8 @@ void CXEnemy::Update(){
 	if (EHP<1){
 		ChangeAnimation(11, false, 90);
 		if (mAnimationFrame >= mAnimationFrameSize){
+			mEAttack = false;
+			mEAttackS = false;
 			mEnabled = false;
 			mDeath = true;
 		}
@@ -103,10 +105,10 @@ void CXEnemy::Update(){
 			CMatrix().RotateY(mRotation.mY);*/
 			//¶‰E‚Ì‰ñ“]ˆ—
 			if (left.Dot(dir) > 0.0f){
-				mRotation.mY -= 5.0f;
+				mRotation.mY -= 4.0f;
 			}
 			else if (left.Dot(dir) < 0.0f){
-				mRotation.mY += 5.0f;
+				mRotation.mY += 4.0f;
 			}
 			if (mKAIHI == false){
 				mPosition = CVector(0.0f, 0.0f, -0.1f)*mMatrix;
@@ -125,7 +127,10 @@ void CXEnemy::Update(){
 					mPosition = CVector(0.0f, 0.0f, 0.0f)*mMatrix;
 				}
 				if (mAnimationFrame >= 30){
-					mPosition = CVector(0.0f, 0.0f, -0.35f)*mMatrix;
+					mPosition = CVector(0.0f, 0.0f, -0.5f)*mMatrix;
+				}
+				if (mStop == false && mAnimationFrame > 50){
+					mPosition = CVector(0.0f, 0.0f, -0.01f)*mMatrix;
 				}
 			}
 			if (mAnimationFrame == 25){
@@ -167,6 +172,8 @@ void CXEnemy::Update(){
 		}
 		if (mHangeki == false){
 			if (mKnockBack == true){
+				mEAttack = false;
+				mEAttackS = false;
 				ChangeAnimation(2, false, 100);
 				mPosition = CVector(0.0f, 0.0f, 0.07f)*mMatrix;
 			}
@@ -179,6 +186,8 @@ void CXEnemy::Update(){
 		}
 		if (mHangeki == false){
 			if (mDown == true){
+				mEAttack = false;
+				mEAttackS = false;
 				ChangeAnimation(11, false, 60);
 				if (EHP < 1 && mAnimationFrame>50 && mAnimationIndex == 11){
 					mAnimationFrame = 60;

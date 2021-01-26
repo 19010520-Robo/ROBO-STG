@@ -11,6 +11,7 @@ public:
 	static int PHP;
 	int X;
 	int Y;
+	int L;
 	float mVelovcityJump;
 	CCollider mColSphereBody;  //‘Ì
 	CCollider mColSphereHead;  //“ª

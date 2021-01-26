@@ -29,6 +29,9 @@ void CEye::Update(){
 			mRotation.mX += 1.0;
 		}
 	}
+	if (CXPlayer::mLook == true){
+		mRotation.mX = 0;
+	}
 	CCharacter::Update();
 
 }
@@ -66,7 +69,7 @@ void CEye2::Update(){
 	else if (up.Dot(dir) < 0.0f){
 		mRotation.mX += 5.0f;
 	}
-
+	
 	if (CXEnemy3::Senser == true){
 		if (FireCount3 > 0) {
 			FireCount3--;
