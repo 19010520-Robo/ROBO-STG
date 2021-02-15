@@ -18,17 +18,15 @@ CMatrix Matrix;
 CModel BackGround;
 CModel CSceneGame::mCube;
 CModel ModelEnemy;
+std::shared_ptr<CTexture>TextureExp(new CTexture());
+
 void CSceneGame::Init() {
 	mScene = EGAME;
+	TextureExp->Load("exp.tga");
 
-	CXEnemy3::mPointSize = 3;
-	CXEnemy3::mPoint = new CPoint[CXEnemy3::mPointSize];
-	CXEnemy3::mPoint[0].Set(CVector(35.0f, 35.0f, 100.0f), 10.0f);
-	CXEnemy3::mPoint[1].Set(CVector(-35.0f, 35.0f, 50.0f), 10.0f);
-	CXEnemy3::mPoint[2].Set(CVector(35.0f, 35.0f, 0.0f), 10.0f);
 
 	CXEnemy::mPointSize = 3;
-	CXEnemy::mPoint = new CPoint[CXEnemy3::mPointSize];
+	CXEnemy::mPoint = new CPoint[CXEnemy::mPointSize];
 	CXEnemy::mPoint[0].Set(CVector(35.0f, 0.0f, 100.0f), 10.0f);
 	CXEnemy::mPoint[1].Set(CVector(-35.0f, 0.0f, 50.0f), 10.0f);
 	CXEnemy::mPoint[2].Set(CVector(35.0f, 0.0f, 0.0f), 10.0f);
@@ -165,7 +163,7 @@ void CSceneGame::Update() {
 }
 
 CSceneGame::~CSceneGame() {
-	delete[]CXEnemy3::mPoint;
+	//delete[]CXEnemy3::mPoint;
 	delete[]CXEnemy::mPoint;
 }
 void CSceneGame::Start2D(float left, float right, float bottom, float top){

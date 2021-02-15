@@ -70,17 +70,17 @@ void CEye2::Update(){
 		mRotation.mX += 5.0f;
 	}
 	
-	if (CXEnemy3::Senser == true){
-		if (FireCount3 > 0) {
-			FireCount3--;
-		}
-		else {
-			CBullet2*bullet = new CBullet2();
-			bullet->Set(0.1f, 1.5f);
-			bullet->mPosition = CVector(0.0f, 0.0f, 1.0f)*mMatrix;
-			bullet->mRotation = mRotation;
-			FireCount3 = 60;
-		}
-	}
+	//if (CXEnemy3::Senser == true){
+	//	if (FireCount3 > 0) {
+	//		FireCount3--;
+	//	}
+	//	else {
+	//		CBullet2*bullet = new CBullet2();
+	//		bullet->Set(0.1f, 1.5f);
+	//		bullet->mPosition = CVector(0.0f, 0.0f, 1.0f)*mMatrix;
+	//		bullet->mRotation = mRotation;
+	//		FireCount3 = 60;
+	//	}
+	//}
 	CCharacter::Update();
 }

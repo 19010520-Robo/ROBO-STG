@@ -6,6 +6,7 @@
 #include"CKey.h"
 #include"CMap.h"
 #include"CEye.h"
+#include"CSound.h"
 /*
 ƒQ[ƒ€‚ÌƒV[ƒ“
 */
@@ -15,7 +16,7 @@ public:
 	CEye2 mEye2;
 	CXPlayer Player;
 	CXEnemy*mEnemy;
-	CXEnemy3 *mEnemy3;
+	//CXEnemy3 *mEnemy3;
 	static CModel mCube;
 	static CModel mPlane;
 	~CSceneGame();

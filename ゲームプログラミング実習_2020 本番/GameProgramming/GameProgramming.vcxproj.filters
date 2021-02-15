@@ -221,5 +221,8 @@
     <ClInclude Include="CTitle.h">
       <Filter>ソース ファイル\Lib</Filter>
     </ClInclude>
+    <ClInclude Include="CXPlayerS.h">
+      <Filter>ソース ファイル\Lib</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

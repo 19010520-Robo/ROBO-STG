@@ -6,6 +6,7 @@ void CTitle::Init() {
 	//テクスチャファイルを読み込む
 	//フォントの設定
 	CText::mFont.Load("FontG.tga");
+	CText::mFont.SetRowCol(1, 4096 / 64);
 	//シーンの設定
 	mScene = ETITLE;
 }

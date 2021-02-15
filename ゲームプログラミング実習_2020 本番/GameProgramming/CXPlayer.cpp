@@ -1,6 +1,7 @@
 #include"CXPlayer.h"
 #include"CKey.h"
 #include"CSceneGame.h"
+#include"CXPlayerS.h"
 CXPlayer *CXPlayer::mPlayer = 0;
 int CXPlayer::mPLife;
 bool CXPlayer::mInSight = false;
@@ -9,6 +10,7 @@ bool CXPlayer::mAttack = false;
 bool CXPlayer::mAttackS = false;
 bool CXPlayer::mPDeath = false;
 int CXPlayer::PHP = 30;
+
 CXPlayer::CXPlayer()
 :mColSphereBody(this, CVector(), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.7f)
 , mColSphereHead(this, CVector(0.0f, 5.0f, -3.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 0.5f)
@@ -25,9 +27,6 @@ CXPlayer::CXPlayer()
 	mColSphereSword.mTag = CCollider::ESWORD;
 	mSight.mTag = CCollider::ESIGHT;
 	mVelovcityJump = 0;
-	kasoku = 0;
-	kasokuB = 0;
-	kasokuC = 0;
 	X = 0;
 	Y = 0;
 	L = 0;
@@ -46,7 +45,7 @@ void CXPlayer::Update(){
 	if (PHP<1){
 		ChangeAnimation(11, false, 90);
 		mPDeath = true;
-		PHP = 0;
+		PHP = DEAD;
 		}
 	if (PHP > 0){
 		if (mAnimationIndex == 4 && mRengeki == true){
@@ -122,16 +121,16 @@ void CXPlayer::Update(){
 						hayasa--;
 					}
 					else if (CKey::Push('B') && kasoku<0.5f){
-						kasoku += 0.15f;
-						hayasa = 10;
+						kasoku += SPEED;
+						hayasa = KASOKUMAX;
 					}
 					else if (kasoku > 0.0f){
-						kasoku -= 0.04f;
+						kasoku -= GENSOKU;
 					}
 				}
 				else
 				{
-					kasoku = 0;
+					kasoku = STOP;
 					if (mAnimationIndex == 1){
 						ChangeAnimation(0, true, 60);
 					}
@@ -142,41 +141,41 @@ void CXPlayer::Update(){
 				}
 
 				if (CKey::Push('A')){
-					kasoku = 0;
+					kasoku = STOP;
 					mPosition = CVector(0.2f + kasokuB, 0.0f, 0.0f)*mMatrix;
 					if (hayasa > 0){
 						hayasa--;
 					}
 					else if (CKey::Push('B') && kasokuB<0.4f){
-						kasokuB += 0.2f;
-						hayasa = 10;
+						kasokuB += SPEED;
+						hayasa = KASOKUMAX;
 					}
 					else if (kasokuB > 0.0f){
-						kasokuB -= 0.05f;
+						kasokuB -= GENSOKU;
 					}
 				}
 				else
 				{
-					kasokuB = 0;
+					kasokuB = STOP;
 				}
 				if (CKey::Push('D')){
-					kasoku = 0;
+					kasoku = STOP;
 					mPosition = CVector(-0.2f + kasokuC, 0.0f, 0.0f)*mMatrix;
 					if (hayasa > 0){
 						hayasa--;
 					}
 					else if (CKey::Push('B') && kasokuC >= -0.4){
-						kasokuC -= 0.2f;
-						hayasa = 20;
+						kasokuC -= SPEED;
+						hayasa = KASOKUMAX;
 					}
 					else if (kasokuC < 0.0f){
-						kasokuC += 0.05f;
+						kasokuC += GENSOKU;
 					}
 				}
 
 				else
 				{
-					kasokuC = 0;
+					kasokuC = STOP;
 				}
 			}
 			if (Back == true){
@@ -214,10 +213,10 @@ void CXPlayer::Update(){
 			}
 			if (mLook == false && Back == false && Down == false){
 				if (CKey::Push('J')){
-					mRotation.mY += 3;
+					mRotation.mY += SITEN;
 				}
 				if (CKey::Push('L')){
-					mRotation.mY -= 3;
+					mRotation.mY -= SITEN;
 				}
 			}
 			if (mInSight == false){
@@ -312,15 +311,15 @@ void CXPlayer::Collision(CCollider*mp, CCollider*yp){
 					if (yp->mTag == CCollider::EESWORD&&CXEnemy::mEAttack == true || yp->mTag == CCollider::EEBODY&&CXEnemy::mEAttack == true){
 						Back = true;
 						CXEnemy::mEAttack = false;
-						PHP -= 3 + rand() % 3;
-						X += 10;
+						PHP -= DAMEGE;
+						X += BACK;
 					}
 					if (yp->mTag == CCollider::EESWORD&&CXEnemy::mEAttackS == true){
 						X = 0;
 						Down = true;
 						CXEnemy::mEAttackS = false;
-						PHP -= 5 + rand() % 3;
-						Y += 15;
+						PHP -= DAMEGES;
+						Y += BACKS;
 					}
 
 				}

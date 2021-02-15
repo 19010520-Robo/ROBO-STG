@@ -44,36 +44,36 @@ public:
 
 };
 
-class CXEnemy2 :public CCharacter{
-public:
-	void Update();
-	CXEnemy2();
-	CCollider mBall;
-	int FireCount2;
-	void Collision(CCollider*mm, CCollider*ym);
-	CXEnemy2(CModel*model, CVector position, CVector rotation, CVector scale);
-	CCollider mSearch3;
-	int tyuusen;
-};
-
-class CXEnemy3 :public CCharacter{
-public:
-	void Update();
-	CXEnemy3()
-	{};
-	CCollider mAir;
-	CCollider mSearch2;
-	int FireCount3;
-	CXEnemy3(CModel*model, CVector position, CVector rotation, CVector scale);
-	static int mPointSize;//ポイントの数
-	CPoint*mpPoint;//目指すポイント
-	int mPointCnt;//ポインタのカウンタ
-	//誘導ポイント
-	static CPoint *mPoint;
-	void Collision(CCollider*ms, CCollider*ys);
-	static CXEnemy3*mEnemy3;
-	static bool Senser;
-};
-
-
+//class CXEnemy2 :public CCharacter{
+//public:
+//	void Update();
+//	CXEnemy2();
+//	CCollider mBall;
+//	int FireCount2;
+//	void Collision(CCollider*mm, CCollider*ym);
+//	CXEnemy2(CModel*model, CVector position, CVector rotation, CVector scale);
+//	CCollider mSearch3;
+//	int tyuusen;
+//};
+//
+//class CXEnemy3 :public CCharacter{
+//public:
+//	void Update();
+//	CXEnemy3()
+//	{};
+//	CCollider mAir;
+//	CCollider mSearch2;
+//	int FireCount3;
+//	CXEnemy3(CModel*model, CVector position, CVector rotation, CVector scale);
+//	static int mPointSize;//ポイントの数
+//	CPoint*mpPoint;//目指すポイント
+//	int mPointCnt;//ポインタのカウンタ
+//	//誘導ポイント
+//	static CPoint *mPoint;
+//	void Collision(CCollider*ms, CCollider*ys);
+//	static CXEnemy3*mEnemy3;
+//	static bool Senser;
+//};
+//
+//
 #endif

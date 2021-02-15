@@ -1,7 +1,5 @@
 #ifndef CXPLAYER_H
 #define CXPLAYER_H
-#define G (1.0f/60.0f)
-#define JUMPV0 (0.4f)
 #include"CEye.h"
 #include"CXCharacter.h"
 #include"CCollider.h"

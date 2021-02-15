@@ -151,6 +151,7 @@
     <ClInclude Include="CXCharacter.h" />
     <ClInclude Include="CXEnemy.h" />
     <ClInclude Include="CXPlayer.h" />
+    <ClInclude Include="CXPlayerS.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
