@@ -82,7 +82,7 @@ void CSceneGame::Update() {
 	//CRes::sModelX.AnimateFrame();
 	////フレームの合成行列を計算する
 	//CRes::sModelX.mFrame[0]->AnimateCombined(&Matrix);
-
+	Camera.mEye = mEye.mPosition;
 	mEye.mPosition = Player.mPosition;
 	if (CXPlayer::mLook == true){
 		mEye.mRotation.mY = Player.mRotation.mY;
@@ -171,7 +171,6 @@ void CSceneGame::Start2D(float left, float right, float bottom, float top){
 	glPushMatrix();
 	//モデルビュー行列の初期化
 	glLoadIdentity();
-
 	//モデルビュー行列から
 	//プロジェクション行列へ切り替え
 	glMatrixMode(GL_PROJECTION);
