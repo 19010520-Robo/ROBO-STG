@@ -19,7 +19,7 @@ void CTitle::Update() {
 
 	if (CKey::Once(VK_RETURN)) {
 		//次のシーンはゲーム
-		mScene = EGAME;
+		mScene = EACTION;
 	}
 }
 //次のシーンの取得

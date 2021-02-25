@@ -1,6 +1,7 @@
 #include "CSceneManager.h"
 #include "CSceneGame.h"
 #include"CTitle.h"
+#include"CAction.h"
 CSceneManager SceneManager;
 
 //コンストラクタ
@@ -36,9 +37,14 @@ void CSceneManager::Update() {
 			mpScene = new CSceneGame();
 			mpScene->Init();
 			break;
+		case CScene::EACTION:
+			mpScene = new CAction();
+			mpScene->Init();
+			break;
 		case CScene::ETITLE:
 			mpScene = new CTitle();
 			mpScene->Init();
+
 		}
 	}
 }

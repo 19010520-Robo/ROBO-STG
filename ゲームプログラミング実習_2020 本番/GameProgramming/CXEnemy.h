@@ -44,6 +44,28 @@ public:
 
 };
 
+class CXEnemy2 :public CXCharacter{
+public:
+	CCollider mColSphereBody;  //体
+	CCollider mColSphereHead;  //頭
+	CCollider mColSphereSword0; //剣
+	CCollider mSearch;
+	CCollider mSearchA;
+	CCollider mSearchB;
+	static CXEnemy2*mEnemy2;
+	void Init(CModelX*model);
+	CXEnemy2(CVector position, CVector rotation, CVector scale);
+	void Collision(CCollider*m, CCollider*y);
+	void Update();
+	static int mPointSize;//ポイントの数
+	CPoint*mpPoint;//目指すポイント
+	int mPointCnt;//ポインタのカウンタ
+	//誘導ポイント
+	static CPoint *mPoint;
+	bool mKAKUNIN;
+	static bool mEncount;
+};
+
 //class CXEnemy2 :public CCharacter{
 //public:
 //	void Update();

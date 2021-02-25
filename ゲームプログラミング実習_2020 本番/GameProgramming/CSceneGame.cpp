@@ -151,11 +151,14 @@ void CSceneGame::Update() {
 	}
 	if (CXEnemy::mDeath==true){
 		CText::DrawString("GAME CLAER!", 180, 400, 20, 20);
+		CXEnemy2::mEncount = false;
 	}
 	if (CXPlayer::mPDeath == true){
 		CText::DrawString("GAME OVER!", 180, 400, 20, 20);
 	}
-
+	if (CXEnemy2::mEncount == false){
+		mScene = EACTION;
+	}
 
 	//2Dï`âÊèIóπ
 	End2D();

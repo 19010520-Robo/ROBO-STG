@@ -13,7 +13,6 @@
 class CSceneGame : public CScene {
 public:
 	CEye mEye;
-	CEye2 mEye2;
 	CXPlayer Player;
 	CXEnemy*mEnemy;
 	//CXEnemy3 *mEnemy3;
