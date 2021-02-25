@@ -304,9 +304,9 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 	}
 }
 CXEnemy2::CXEnemy2(CVector position, CVector rotation, CVector scale)
-:mColSphereBody(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 2.0f)
-, mColSphereHead(this, CVector(0.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.5f)
-, mColSphereSword0(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.2f)
+:mColSphereBody1(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 2.0f)
+, mColSphereHead1(this, CVector(0.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.5f)
+, mColSphereSword01(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.2f)
 , mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 50.0f)
 , mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 20.0f)
 , mSearchB(this, CVector(0.0f, 2.5f, -2.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 2.0f)
@@ -315,11 +315,11 @@ CXEnemy2::CXEnemy2(CVector position, CVector rotation, CVector scale)
 	mPosition = position;//位置の設定
 	mRotation = rotation;//回転の設定
 	mScale = scale;//拡縮の設定
-	mColSphereBody.mTag = CCollider::EEBODY;
+	mColSphereBody1.mTag = CCollider::EEBODY;
 	mSearch.mTag = CCollider::ESEARCH;
 	mSearchA.mTag = CCollider::ESEARCHA;
 	mSearchB.mTag = CCollider::ESEARCHB;
-	mColSphereSword0.mTag = CCollider::EESWORD;
+	mColSphereSword01.mTag = CCollider::EESWORD;
 	mPointCnt = 0;//最初のポイントを設定
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定
 	mKAKUNIN = false;
@@ -329,11 +329,11 @@ void CXEnemy2::Init(CModelX*model)
 {
 	CXCharacter::Init(model);
 	//合成行列の設定
-	mColSphereBody.mpCombinedMatrix = &mpCombinesMatrix[1];
+	mColSphereBody1.mpCombinedMatrix = &mpCombinesMatrix[1];
 	//頭
-	mColSphereHead.mpCombinedMatrix = &mpCombinesMatrix[1];
+	mColSphereHead1.mpCombinedMatrix = &mpCombinesMatrix[1];
 	//剣
-	mColSphereSword0.mpCombinedMatrix = &mpCombinesMatrix[26];
+	mColSphereSword01.mpCombinedMatrix = &mpCombinesMatrix[26];
 }
 void CXEnemy2::Update(){
 	if (mpPoint == 0)

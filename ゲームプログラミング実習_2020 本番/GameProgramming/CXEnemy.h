@@ -46,9 +46,9 @@ public:
 
 class CXEnemy2 :public CXCharacter{
 public:
-	CCollider mColSphereBody;  //‘Ì
-	CCollider mColSphereHead;  //“ª
-	CCollider mColSphereSword0; //Œ•
+	CCollider mColSphereBody1;  //‘Ì
+	CCollider mColSphereHead1;  //“ª
+	CCollider mColSphereSword01; //Œ•
 	CCollider mSearch;
 	CCollider mSearchA;
 	CCollider mSearchB;

@@ -52,9 +52,9 @@ void CAction::Init(){
 	//キャラクターにモデルを設定
 	Player.Init(&CRes::sModelX);
 	//敵の初期設定
+	mEnemy2 = new CXEnemy2(CVector(0.0f, 0.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
 	mEnemy2->Init(&CRes::sKnight);
 	//敵の配置]
-	mEnemy2 = new CXEnemy2(CVector(0.0f, 0.0f, 100.0f), CVector(), CVector(1.5f, 1.5f, 1.5f));
 	mEnemy2->mAnimationFrameSize = 1024;
 	mEnemy2->ChangeAnimation(1, true, 60);
 
@@ -94,7 +94,7 @@ void CAction::Update(){
 }
 
 CAction::~CAction() {
-	delete[]CXEnemy::mPoint;
+	delete[]CXEnemy2::mPoint;
 }
 CScene::EScene CAction::GetNextScene() {
 	return mScene;
