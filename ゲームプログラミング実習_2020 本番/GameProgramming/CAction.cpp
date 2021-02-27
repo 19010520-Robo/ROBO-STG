@@ -65,7 +65,9 @@ void CAction::Init(){
 }
 
 void CAction::Update(){
-	TaskManager.Update();
+	if (CXEnemy2::mEncount == false){
+		TaskManager.Update();
+	}
 	//カメラの位置をプレイヤーの位置に固定する
 	mEye.mPosition = Player.mPosition;
 

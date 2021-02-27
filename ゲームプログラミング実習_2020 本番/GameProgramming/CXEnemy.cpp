@@ -411,6 +411,7 @@ void CXEnemy2::Collision(CCollider*m, CCollider*y){
 					if (y->mTag == CCollider::EPBODY){
 						//“–‚½‚Á‚½‚çƒV[ƒ“‚ÌØ‚è‘Ö‚¦‚ğƒIƒ“‚É‚·‚é
 						mEncount = true;
+						mEnabled = false;
 					}
 				}
 			}
