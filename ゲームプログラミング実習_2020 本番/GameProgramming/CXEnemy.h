@@ -62,7 +62,7 @@ public:
 	int mPointCnt;//ポインタのカウンタ
 	//誘導ポイント
 	static CPoint *mPoint;
-	bool mKAKUNIN;
+	bool mKAKUNIN2;
 	static bool mEncount;
 };
 

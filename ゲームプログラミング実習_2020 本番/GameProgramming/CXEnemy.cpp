@@ -305,11 +305,7 @@ void CXEnemy::Collision(CCollider*m, CCollider*y){
 }
 CXEnemy2::CXEnemy2(CVector position, CVector rotation, CVector scale)
 :mColSphereBody1(this, CVector(0.5f, -1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 2.0f)
-, mColSphereHead1(this, CVector(0.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.5f)
-, mColSphereSword01(this, CVector(0.5f, 2.5f, -0.2f), CVector(), CVector(1.0f, 1.0f, 1.0f), 1.2f)
 , mSearch(this, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 50.0f)
-, mSearchA(this, CVector(0.0f, 2.5f, -2.5f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 20.0f)
-, mSearchB(this, CVector(0.0f, 2.5f, -2.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f), 2.0f)
 {
 	mTag = EENEMY;
 	mPosition = position;//位置の設定
@@ -317,12 +313,9 @@ CXEnemy2::CXEnemy2(CVector position, CVector rotation, CVector scale)
 	mScale = scale;//拡縮の設定
 	mColSphereBody1.mTag = CCollider::EEBODY;
 	mSearch.mTag = CCollider::ESEARCH;
-	mSearchA.mTag = CCollider::ESEARCHA;
-	mSearchB.mTag = CCollider::ESEARCHB;
-	mColSphereSword01.mTag = CCollider::EESWORD;
 	mPointCnt = 0;//最初のポイントを設定
 	mpPoint = &mPoint[mPointCnt];//&mPoint[mPointCnt];//目指すポイントのポインタを設定
-	mKAKUNIN = false;
+	mKAKUNIN2 = false;
 	mEnemy2 = this;
 }
 void CXEnemy2::Init(CModelX*model)
@@ -330,17 +323,13 @@ void CXEnemy2::Init(CModelX*model)
 	CXCharacter::Init(model);
 	//合成行列の設定
 	mColSphereBody1.mpCombinedMatrix = &mpCombinesMatrix[1];
-	//頭
-	mColSphereHead1.mpCombinedMatrix = &mpCombinesMatrix[1];
-	//剣
-	mColSphereSword01.mpCombinedMatrix = &mpCombinesMatrix[26];
 }
 void CXEnemy2::Update(){
 	if (mpPoint == 0)
 	{
 		return;
 	}
-	if (mKAKUNIN == false){
+	if (mKAKUNIN2 == false){
 		CVector dir = mpPoint->mPosition - mPosition;
 		//左方向のベクトルを求める
 		CVector left = CVector(1.0f, 0.0f, 0.0f)*
@@ -360,7 +349,7 @@ void CXEnemy2::Update(){
 		}
 		mPosition = CVector(0.0f, 0.0f, -0.1f)*mMatrix;
 	}
-	if (mKAKUNIN == true ){
+	if (mKAKUNIN2 == true ){
 		CVector dir = CXPlayer::mPlayer->mPosition - mPosition;
 		//左方向のベクトルを求める
 		CVector left = CVector(1.0f, 0.0f, 0.0f)*
@@ -401,7 +390,7 @@ void CXEnemy2::Collision(CCollider*m, CCollider*y){
 				switch (y->mpParent->mTag){
 				case EPLAYER:
 					if (y->mTag == CCollider::EPBODY){
-						mKAKUNIN = true;
+						mKAKUNIN2 = true;
 					}
 				}
 			}
@@ -431,7 +420,7 @@ void CXEnemy2::Collision(CCollider*m, CCollider*y){
 		}
 	}
 	else{
-		mKAKUNIN = false;
+		mKAKUNIN2 = false;
 	}
 }
 

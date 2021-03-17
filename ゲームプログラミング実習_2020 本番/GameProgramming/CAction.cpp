@@ -15,7 +15,6 @@
 CMatrix Matrix2;
 CModel BackGround2;
 CModel CAction::mCube2;
-CModel ModelEnemy2;
 
 void CAction::Init(){
 	//シーン名はアクション
@@ -29,7 +28,6 @@ void CAction::Init(){
 
 
 	mCube2.Load("cube.obj", "cube.mtl");
-	ModelEnemy2.Load("f16.obj", "f16.mtl");
 	BackGround2.Load("sky.obj", "sky.mtl");
 	//テキストフォントの読み込みと設定
 	CText::mFont.Load("FontG.tga");

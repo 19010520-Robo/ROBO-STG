@@ -32,6 +32,7 @@ public:
 	CXPlayer();
 	//XVˆ—
 	void Update();
+	void KeyProc();
 	void Init(CModelX*model);
 	void Collision(CCollider*mp, CCollider*yp);
 	static CXPlayer*mPlayer;

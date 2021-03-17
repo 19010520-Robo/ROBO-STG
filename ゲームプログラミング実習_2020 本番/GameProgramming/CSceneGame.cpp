@@ -17,7 +17,6 @@
 CMatrix Matrix;
 CModel BackGround;
 CModel CSceneGame::mCube;
-CModel ModelEnemy;
 std::shared_ptr<CTexture>TextureExp(new CTexture());
 
 void CSceneGame::Init() {
@@ -32,10 +31,7 @@ void CSceneGame::Init() {
 	CXEnemy::mPoint[2].Set(CVector(35.0f, 0.0f, 0.0f), 10.0f);
 
 	mCube.Load("cube.obj", "cube.mtl");
-	ModelEnemy.Load("f16.obj", "f16.mtl");
 
-	CRes::sModelX.Load(MODEL_FILE);
-	CRes::sKnight.Load(MODEL_FILE2);
 	CRes::sKnight.SeparateAnimationSet(0, 10, 80, "walk");//1:移動
 	CRes::sKnight.SeparateAnimationSet(0, 1530, 1830, "idle1");//2:待機
 	CRes::sKnight.SeparateAnimationSet(0, 10, 80, "walk");//3:ダミー
